@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Insider — News Consumption Survey Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #CC0000;
+    --red-light: #ff1a1a;
+    --dark: #111111;
+    --dark2: #1c1c1c;
+    --dark3: #2a2a2a;
+    --mid: #555;
+    --muted: #888;
+    --border: #e8e8e8;
+    --bg: #f7f6f3;
+    --white: #ffffff;
+    --card: #ffffff;
+    --text: #111111;
+    --text2: #444444;
+    --text3: #777777;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 16px rgba(0,0,0,0.07);
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ─── MASTHEAD ─── */
+  .masthead {
+    background: var(--dark);
+    color: #fff;
+    padding: 0;
+  }
+  .masthead-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .masthead-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.25rem;
+  }
+  .brand-block {}
+  .brand-block .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .brand-block h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .brand-block h1 span { color: var(--red); }
+  .brand-block .subtitle {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 0.6rem;
+    font-weight: 300;
+  }
+  .masthead-stats {
+    display: flex;
+    gap: 0;
+    flex-shrink: 0;
+  }
+  .mstat {
+    padding: 0.75rem 1.5rem;
+    border-left: 1px solid #2c2c2c;
+    text-align: right;
+  }
+  .mstat:first-child { border-left: none; }
+  .mstat .n {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+  .mstat .l {
+    font-size: 11px;
+    color: #777;
+    margin-top: 3px;
+    font-weight: 400;
+  }
+
+  /* ─── NAV TABS ─── */
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid #222;
+    margin-top: 0.5rem;
+  }
+  .nav-tab {
+    padding: 0.75rem 1.25rem;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: #ccc; }
+  .nav-tab.active { color: #fff; border-bottom-color: var(--red); }
+
+  /* ─── CONTROLS ─── */
+  .controls-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .controls-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.6rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-right: 0.5rem;
+  }
+  .seg-pills {
+    display: flex;
+    gap: 6px;
+  }
+  .seg-pill {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    color: var(--text2);
+    background: transparent;
+    transition: all 0.18s;
+  }
+  .seg-pill:hover { border-color: #bbb; }
+  .seg-pill.active {
+    background: var(--dark);
+    color: #fff;
+    border-color: var(--dark);
+  }
+  .respondent-badge {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 400;
+  }
+  .respondent-badge strong { color: var(--text); font-weight: 600; }
+
+  /* ─── MAIN CONTENT ─── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+
+  /* ─── OVERVIEW NUMBERS ─── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .kpi-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform 0.15s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); }
+  .kpi-card .kpi-val {
+    font-family: var(--font-head);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+  .kpi-card .kpi-lbl {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 6px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  .kpi-card .kpi-delta {
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .kpi-card .kpi-delta.up { color: #15803d; }
+  .kpi-card .kpi-delta.down { color: var(--red); }
+  .kpi-card .kpi-delta.neutral { color: var(--text3); }
+
+  /* ─── INSIGHT BANNER ─── */
+  .insight-banner {
+    background: var(--dark);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: stretch;
+    overflow-x: auto;
+  }
+  .insight-item {
+    flex: 1;
+    min-width: 180px;
+    border-left: 3px solid var(--red);
+    padding-left: 1rem;
+  }
+  .insight-item .ii-val {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--red);
+  }
+  .insight-item .ii-txt {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* ─── GRID LAYOUTS ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .grid-1-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ─── CHART CARDS ─── */
+  .chart-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .chart-card.accent {
+    border-left: 4px solid var(--red);
+  }
+  .chart-card .cc-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.3rem;
+  }
+  .chart-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .chart-card .cc-sub {
+    font-size: 11.5px;
+    color: var(--text3);
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+  }
+  .chart-wrap { position: relative; }
+
+  /* ─── HORIZONTAL BARS (CSS) ─── */
+  .hbar-list { display: flex; flex-direction: column; gap: 8px; }
+  .hbar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .hbar-row:hover .hbar-track .hbar-fill { filter: brightness(1.1); }
+  .hbar-label {
+    font-size: 12px;
+    color: var(--text2);
+    width: 145px;
+    flex-shrink: 0;
+    text-align: right;
+    line-height: 1.3;
+  }
+  .hbar-track {
+    flex: 1;
+    height: 22px;
+    background: #f0eeea;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .hbar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .hbar-fill span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .hbar-fill.secondary span { color: rgba(255,255,255,0.85); }
+
+  /* ─── DONUT STATS ─── */
+  .donut-section {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .donut-legend { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .legend-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .legend-sq {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .legend-pct { margin-left: auto; font-weight: 600; color: var(--text); font-size: 13px; }
+
+  /* ─── SECTION DIVIDER ─── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0 1.25rem;
+  }
+  .section-divider h2 {
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .section-divider .sd-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider .sd-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+
+  /* ─── PLATFORM BUBBLES ─── */
+  .bubble-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.5rem;
+  }
+  .bubble {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #f0eeea;
+    color: var(--text2);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .bubble:hover { transform: scale(1.03); }
+  .bubble .bubble-n {
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .bubble.top1 { background: var(--dark); color: #fff; }
+  .bubble.top2 { background: var(--dark3); color: #eee; }
+  .bubble.top3 { background: #3a3a3a; color: #ddd; }
+  .bubble.top4 { background: #f5e8e8; color: #7a0000; border-color: #f0c0c0; }
+  .bubble.top5 { background: #fef3f0; color: #9a3000; border-color: #fad5c0; }
+
+  /* ─── COMPARISON TABLE ─── */
+  .comp-table { width: 100%; border-collapse: collapse; }
+  .comp-table th {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .comp-table th:not(:first-child) { text-align: center; }
+  .comp-table td {
+    padding: 0.6rem 0.75rem;
+    font-size: 12.5px;
+    color: var(--text2);
+    border-bottom: 1px solid #f5f3f0;
+  }
+  .comp-table td:not(:first-child) { text-align: center; font-weight: 600; }
+  .comp-table tr:hover td { background: #faf9f7; }
+  .comp-table td.hi { color: var(--red); }
+  .comp-table td.lo { color: var(--text3); }
+
+  /* ─── HIDDEN SECTION ─── */
+  .tab-section { display: none; }
+  .tab-section.active { display: block; }
+
+  /* ─── TOOLTIP ─── */
+  #tooltip {
+    position: fixed;
+    background: var(--dark);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 1000;
+    max-width: 220px;
+    line-height: 1.4;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--dark);
+    color: #555;
+    font-size: 11px;
+    text-align: center;
+    padding: 1.25rem 2rem;
+    margin-top: 3rem;
+  }
+  .footer span { color: var(--red); }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-1-2 { grid-template-columns: 1fr; }
+    .masthead-stats { display: none; }
+    .hbar-label { width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="tooltip"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="brand-block">
+        <div class="eyebrow">Consulting Research · Primary Survey · 2026</div>
+        <h1>Business <span>Insider</span><br>Audience Intelligence</h1>
+        <div class="subtitle">News Consumption Habits Survey — 112 respondents · Demographic focus: ages 23–35</div>
+      </div>
+      <div class="masthead-stats">
+        <div class="mstat"><div class="n">112</div><div class="l">Respondents</div></div>
+        <div class="mstat"><div class="n">70</div><div class="l">Aged 18–34</div></div>
+        <div class="mstat"><div class="n">30</div><div class="l">Questions</div></div>
+        <div class="mstat"><div class="n">4</div><div class="l">Workstreams</div></div>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <div class="nav-tab active" onclick="switchTab('overview')">Overview</div>
+      <div class="nav-tab" onclick="switchTab('discovery')">Discovery & Habits</div>
+      <div class="nav-tab" onclick="switchTab('video')">Video Behavior</div>
+      <div class="nav-tab" onclick="switchTab('ai')">AI & Trust</div>
+      <div class="nav-tab" onclick="switchTab('money')">Monetization</div>
+      <div class="nav-tab" onclick="switchTab('segments')">Demographics</div>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <div class="controls-inner">
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+      <span class="filter-label">Segment</span>
+      <div class="seg-pills">
+        <button class="seg-pill active" onclick="setSeg('all',this)">All (n=112)</button>
+        <button class="seg-pill" onclick="setSeg('young',this)">18–34 (n=70)</button>
+        <button class="seg-pill" onclick="setSeg('mid',this)">35–44 (n=35)</button>
+      </div>
+    </div>
+    <div class="respondent-badge" id="resp-badge">Showing <strong>all 112</strong> respondents</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- ════════════════ OVERVIEW ════════════════ -->
+<div class="tab-section active" id="tab-overview">
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpi-social">49</div>
+      <div class="kpi-lbl">Discover news via social media first</div>
+      <div class="kpi-delta down" id="kpi-social-d">43% of total — #1 channel</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpi-scroll">48%</div>
+      <div class="kpi-lbl">Scroll past after watching a news video</div>
+      <div class="kpi-delta down">Conversion gap: only 18% seek the article</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpi-ai-trust">84%</div>
+      <div class="kpi-lbl">Say AI content erodes trust or willingness to pay</div>
+      <div class="kpi-delta down">Trust less (54%) + won't pay (13%) + destroys trust (18%)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpi-career">64</div>
+      <div class="kpi-lbl">Would pay for content that helps their career</div>
+      <div class="kpi-delta up">#1 content value driver — ahead of breaking news</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpi-wtp">59%</div>
+      <div class="kpi-lbl">Would pay $5–20+/month for the right product</div>
+      <div class="kpi-delta neutral">14% wouldn't pay at all</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" id="kpi-employer">39%</div>
+      <div class="kpi-lbl">Work at companies with subscription budgets</div>
+      <div class="kpi-delta up">B2B path: employer-billed model opportunity</div>
+    </div>
+  </div>
+
+  <div class="insight-banner">
+    <div class="insight-item">
+      <div class="ii-val">49</div>
+      <div class="ii-txt">Find BI via social — a channel BI doesn't own or monetize directly</div>
+    </div>
+    <div class="insight-item">
+      <div class="ii-val">70%</div>
+      <div class="ii-txt">Use AI to bypass paywalls at least occasionally</div>
+    </div>
+    <div class="insight-item">
+      <div class="ii-val">70%</div>
+      <div class="ii-txt">Very/somewhat interested in a company-intelligence curation platform</div>
+    </div>
+    <div class="insight-item">
+      <div class="ii-val">73</div>
+      <div class="ii-txt">Daily short updates are the #1 habit-formation driver</div>
+    </div>
+    <div class="insight-item">
+      <div class="ii-val">90 days</div>
+      <div class="ii-txt">Make-or-break window for subscriber retention after signup</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card accent">
+      <div class="cc-label">Discovery</div>
+      <h3>How readers first find news</h3>
+      <div class="cc-sub">Social media dominates — BI acquires readers on platforms it doesn't control</div>
+      <div class="hbar-list" id="overview-disc"></div>
+    </div>
+    <div class="chart-card accent">
+      <div class="cc-label">Monetization</div>
+      <h3>Content worth paying for</h3>
+      <div class="cc-sub">Career utility and financial decisions lead — breaking news trails far behind</div>
+      <div class="hbar-list" id="overview-pay"></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Habit Formation</div>
+      <h3>What would drive daily return visits?</h3>
+      <div class="cc-sub">Short daily updates and personalized feeds beat newsletters 2:1</div>
+      <div class="hbar-list" id="overview-habit"></div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Platforms</div>
+      <h3>Where readers currently consume news</h3>
+      <div class="cc-sub">NYT & WSJ dominate — Instagram edges out YouTube in reach</div>
+      <div class="bubble-grid" id="overview-platforms"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ DISCOVERY & HABITS ════════════════ -->
+<div class="tab-section" id="tab-discovery">
+  <div class="grid-2">
+    <div class="chart-card accent">
+      <div class="cc-label">Discovery Channel</div>
+      <h3>How do you first discover news or trends?</h3>
+      <div class="cc-sub">Social media captures 43% of first-touch attention</div>
+      <div class="hbar-list" id="disc-discovery"></div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Timing</div>
+      <h3>News consumption by time of day</h3>
+      <div class="cc-sub">Early morning is the primary consumption window</div>
+      <div class="chart-wrap" style="height:240px;">
+        <canvas id="timeChart" role="img" aria-label="Bar chart showing news consumption by time of day">News consumption peaks early morning before 9am.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Format Preference</div>
+      <h3>Content-led vs. creator-led news</h3>
+      <div class="cc-sub">Readers prefer objective reporting — but creators drive retention</div>
+      <div class="donut-section" style="margin-top:1rem;">
+        <div style="position:relative;width:160px;height:160px;flex-shrink:0;">
+          <canvas id="formatChart" width="160" height="160" role="img" aria-label="Donut chart showing 70% prefer content-led news">Format preference breakdown.</canvas>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+            <div style="font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:var(--red);" id="fmt-center-val">70%</div>
+            <div style="font-size:10px;color:var(--text3);">content-led</div>
+          </div>
+        </div>
+        <div class="donut-legend" id="format-legend">
+          <div class="legend-row"><div class="legend-sq" style="background:#CC0000;"></div>Content-led (objective)<span class="legend-pct">70%</span></div>
+          <div class="legend-row"><div class="legend-sq" style="background:#888;"></div>Creator-led (personality)<span class="legend-pct">17%</span></div>
+          <div class="legend-row"><div class="legend-sq" style="background:#ccc;"></div>No preference<span class="legend-pct">12%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Subscription Status</div>
+      <h3>Current paid news subscriptions</h3>
+      <div class="cc-sub">NYT and WSJ dominate paid — most read free across platforms</div>
+      <div class="bubble-grid" id="disc-subs"></div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:1.25rem;">
+    <div class="cc-label">Habit Drivers</div>
+    <h3>What would make you return to a platform daily?</h3>
+    <div class="cc-sub">73 respondents cite short daily updates — nearly double any other driver</div>
+    <div class="grid-2" style="margin-top:1rem;margin-bottom:0;">
+      <div class="hbar-list" id="disc-habit"></div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding-left:1.5rem;border-left:1px solid var(--border);">
+        <div>
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);margin-bottom:6px;">The morning opportunity</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.6;">Early morning (before 9am) is the #1 news consumption window. BI's notification and newsletter cadence should target <strong>6–8am</strong> to compete with NYT Morning Briefing and WSJ What's News.</div>
+        </div>
+        <div style="background:#fef5f5;border-left:3px solid var(--red);padding:0.75rem;border-radius:0 6px 6px 0;">
+          <div style="font-size:11px;font-weight:600;color:var(--red);margin-bottom:4px;">STRATEGIC SIGNAL</div>
+          <div style="font-size:12px;color:#7a0000;line-height:1.5;">Readers want routine, not serendipity. A <em>predictable</em> daily format beats an algorithm-driven feed for habit formation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ VIDEO BEHAVIOR ════════════════ -->
+<div class="tab-section" id="tab-video">
+  <div class="insight-banner">
+    <div class="insight-item">
+      <div class="ii-val">48%</div>
+      <div class="ii-txt">Scroll past after watching — the biggest conversion leak</div>
+    </div>
+    <div class="insight-item">
+      <div class="ii-val">18%</div>
+      <div class="ii-txt">Look for the full article — BI's current capture rate</div>
+    </div>
+    <div class="insight-item">
+      <div class="ii-val">Target: 35%</div>
+      <div class="ii-txt">Achievable article click-through with embedded CTAs</div>
+    </div>
+    <div class="insight-item">
+      <div class="ii-val">3 sec</div>
+      <div class="ii-txt">Human face in opening frame boosts retention 30%+</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card accent">
+      <div class="cc-label">Post-Video Action</div>
+      <h3>After watching a news video, what do you do next?</h3>
+      <div class="cc-sub">Nearly half the audience leaves — BI must insert friction-free bridges to owned content</div>
+      <div class="chart-wrap" style="height:300px;">
+        <canvas id="videoChart" role="img" aria-label="Bar chart of post-video behavior showing 48 percent scroll on">Post-video behavior distribution.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Content Funnel</div>
+      <h3>The social-to-subscription conversion pipeline</h3>
+      <div class="cc-sub">4-stage funnel: Discovery → Interest → Engagement → Conversion</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:1rem;">
+        <div class="funnel-stage" data-pct="100" data-color="#CC0000" data-label="Discovery" data-sublabel="Social / TikTok / Reels" data-n="100%"></div>
+        <div class="funnel-stage" data-pct="52" data-color="#aa0000" data-label="Interest" data-sublabel="Clicks to search or source" data-n="~52%"></div>
+        <div class="funnel-stage" data-pct="18" data-color="#880000" data-label="Engagement" data-sublabel="Reads full BI article" data-n="~18%"></div>
+        <div class="funnel-stage" data-pct="4" data-color="#550000" data-label="Conversion" data-sublabel="Subscribes to newsletter / paywall" data-n="~4%"></div>
+      </div>
+      <div style="margin-top:1rem;font-size:11px;color:var(--text3);font-style:italic;">Target: raise engagement stage to 35% with embedded CTAs + reporter-led bridges</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="chart-card">
+      <div class="cc-label">Format Preference</div>
+      <h3>Would you still read a full article if AI can summarise in 30 seconds?</h3>
+      <div class="cc-sub">Long-form retains value — but only conditionally</div>
+      <div class="chart-wrap" style="height:200px;margin-top:0.5rem;">
+        <canvas id="aiReadChart" role="img" aria-label="Pie chart: 53 percent read only if interesting, 37 percent yes, 7 percent no">Full read preference.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Reporter Preference</div>
+      <h3>Creators vs. brands — who do young readers follow?</h3>
+      <div class="cc-sub">Individuals outperform institutions among under-35s</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:1rem;">
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:12px;color:var(--text2);">Follow individual news creators</span>
+            <span style="font-size:13px;font-weight:700;color:var(--red);">51%</span>
+          </div>
+          <div style="height:8px;background:#f0eeea;border-radius:4px;overflow:hidden;">
+            <div style="width:51%;height:100%;background:var(--red);border-radius:4px;"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:12px;color:var(--text2);">Trust news brands primarily</span>
+            <span style="font-size:13px;font-weight:700;color:var(--mid);">39%</span>
+          </div>
+          <div style="height:8px;background:#f0eeea;border-radius:4px;overflow:hidden;">
+            <div style="width:39%;height:100%;background:#aaa;border-radius:4px;"></div>
+          </div>
+        </div>
+        <div style="margin-top:0.5rem;background:#fef5f5;border-left:3px solid var(--red);padding:0.75rem;border-radius:0 6px 6px 0;font-size:11px;color:#7a0000;">Faces in the first 3 seconds of video boost retention. BI's reporter-as-creator model directly addresses this preference gap.</div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Interview Prep Sources</div>
+      <h3>Where do readers go for career intelligence?</h3>
+      <div class="cc-sub">News sites + industry trades dominate — BI has a direct content gap here</div>
+      <div class="hbar-list" style="margin-top:0.5rem;" id="video-jobprep"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ AI & TRUST ════════════════ -->
+<div class="tab-section" id="tab-ai">
+  <div class="grid-2">
+    <div class="chart-card accent">
+      <div class="cc-label">Trust Impact</div>
+      <h3>If an article is written/helped by AI, how does that affect your trust?</h3>
+      <div class="cc-sub">84% experience some negative trust or payment impact — AI authorship is a liability</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="aiTrustChart" role="img" aria-label="Horizontal bar chart of AI trust impact">AI trust impact breakdown.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">AI Usage Frequency</div>
+      <h3>How often do you use AI tools to research or summarise news?</h3>
+      <div class="cc-sub">38% never use AI — but 43% use it at least occasionally</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="aiUsageChart" role="img" aria-label="Donut chart showing AI usage frequency">AI usage frequency.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Paywall Bypass</div>
+      <h3>How often do you use AI to get around articles you can't access?</h3>
+      <div class="cc-sub">70% bypass paywalls at least occasionally — this is an accelerating threat to subscription revenue</div>
+      <div class="chart-wrap" style="height:200px;margin-top:0.5rem;">
+        <canvas id="bypassChart" role="img" aria-label="Pie chart showing AI paywall bypass frequency">Paywall bypass frequency.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Day Pass Appetite</div>
+      <h3>Would you use a $0.99 day pass instead of a full subscription?</h3>
+      <div class="cc-sub">Majority say no — but the 35% who say yes represent a low-friction conversion path</div>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:1.25rem;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:13px;color:var(--text2);">No — prefer subscription or free</span>
+            <span style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--mid);">53%</span>
+          </div>
+          <div style="height:10px;background:#f0eeea;border-radius:5px;overflow:hidden;"><div style="width:53%;height:100%;background:#bbb;border-radius:5px;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:13px;color:var(--text2);">Yes — would use a day pass</span>
+            <span style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:var(--red);">35%</span>
+          </div>
+          <div style="height:10px;background:#f0eeea;border-radius:5px;overflow:hidden;"><div style="width:35%;height:100%;background:var(--red);border-radius:5px;"></div></div>
+        </div>
+        <div style="background:#fef5f5;border-left:3px solid var(--red);padding:0.75rem;border-radius:0 6px 6px 0;font-size:11px;color:#7a0000;line-height:1.5;">Micro-transactions are viable for high-intent articles (earnings reports, job market data). Price point should stay ≤$0.99 to avoid cognitive friction.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:1.25rem;">
+    <div class="cc-label">Strategic Framework</div>
+    <h3>AI in BI's content stack — what works, what doesn't</h3>
+    <div class="cc-sub">Survey data clearly defines where AI adds and destroys value</div>
+    <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:2rem;margin-top:1.25rem;">
+      <div>
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#15803d;margin-bottom:0.75rem;">✓ AI as production tool (safe)</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span>Video transcription and captioning</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span>Article-to-newsletter brief conversion</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span>SEO optimisation and headline A/B testing</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span>Topic trend detection and story surfacing</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span>Personalised content feed curation</div>
+        </div>
+      </div>
+      <div style="background:var(--border);"></div>
+      <div>
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:0.75rem;">✕ AI as author (destroys trust)</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:var(--red);font-weight:700;flex-shrink:0;">✕</span>AI-written bylines or undisclosed AI authorship</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:var(--red);font-weight:700;flex-shrink:0;">✕</span>AI-set editorial agenda or news judgment</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:var(--red);font-weight:700;flex-shrink:0;">✕</span>AI-generated video presenters (no human face)</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:var(--red);font-weight:700;flex-shrink:0;">✕</span>AI replacing reporter-source relationships</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2);"><span style="color:var(--red);font-weight:700;flex-shrink:0;">✕</span>Replacing subscription paywalls with AI summaries</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ MONETIZATION ════════════════ -->
+<div class="tab-section" id="tab-money">
+  <div class="grid-2">
+    <div class="chart-card accent">
+      <div class="cc-label">Willingness to Pay</div>
+      <h3>Maximum monthly spend on news</h3>
+      <div class="cc-sub">$0–10/month is the comfort zone; career-utility unlocks the $10–20 bracket</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="wtpChart" role="img" aria-label="Bar chart of willingness to pay per month">WTP per month distribution.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Content Value Drivers</div>
+      <h3>What type of content would you most pay for?</h3>
+      <div class="cc-sub">Career and financial utility dominate — entertainment barely registers</div>
+      <div class="hbar-list" id="money-payfor" style="margin-top:0.5rem;"></div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="chart-card">
+      <div class="cc-label">Employer Budget</div>
+      <h3>Does your employer provide a subscription budget?</h3>
+      <div class="cc-sub">39% say yes — B2B path is material</div>
+      <div class="chart-wrap" style="height:200px;margin-top:0.5rem;">
+        <canvas id="empChart" role="img" aria-label="Pie chart showing employer subscription budget availability">Employer budget availability.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Cancellation Drivers</div>
+      <h3>Why have readers cancelled subscriptions?</h3>
+      <div class="cc-sub">Irrelevance beats price as the churn driver</div>
+      <div class="hbar-list" id="money-cancel" style="margin-top:0.5rem;"></div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Company Curation</div>
+      <h3>Interest in a single platform for company intelligence?</h3>
+      <div class="cc-sub">70% interested — professional intelligence hub is validated</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:1rem;">
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:var(--text2);">Very interested</span><span style="font-size:13px;font-weight:700;color:var(--red);">24%</span></div>
+          <div style="height:8px;background:#f0eeea;border-radius:4px;overflow:hidden;"><div style="width:24%;height:100%;background:var(--red);border-radius:4px;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:var(--text2);">Somewhat interested</span><span style="font-size:13px;font-weight:700;color:#aa4400)">38%</span></div>
+          <div style="height:8px;background:#f0eeea;border-radius:4px;overflow:hidden;"><div style="width:38%;height:100%;background:#cc6600;border-radius:4px;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:var(--text2);">Neutral</span><span style="font-size:13px;font-weight:700;color:var(--mid);">24%</span></div>
+          <div style="height:8px;background:#f0eeea;border-radius:4px;overflow:hidden;"><div style="width:24%;height:100%;background:#aaa;border-radius:4px;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:var(--text2);">Not interested</span><span style="font-size:13px;font-weight:700;color:var(--text3);">12%</span></div>
+          <div style="height:8px;background:#f0eeea;border-radius:4px;overflow:hidden;"><div style="width:12%;height:100%;background:#ddd;border-radius:4px;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:1.25rem;">
+    <div class="cc-label">Monetization Matrix</div>
+    <h3>Revenue opportunity by segment and content type</h3>
+    <div class="cc-sub">Mapping willingness-to-pay against content preference and employer funding availability</div>
+    <div style="overflow-x:auto;margin-top:1rem;">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Content type</th>
+            <th>Demand score</th>
+            <th>WTP ($10+)</th>
+            <th>Employer-billed fit</th>
+            <th>BI current offering</th>
+            <th>Opportunity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Career development</strong></td><td class="hi">64 / 112</td><td class="hi">High</td><td class="hi">Strong</td><td>Weak</td><td class="hi">★★★ Urgent</td></tr>
+          <tr><td><strong>Personal finance</strong></td><td class="hi">49 / 112</td><td class="hi">High</td><td>Moderate</td><td>Generic</td><td class="hi">★★★ Urgent</td></tr>
+          <tr><td><strong>Deep analysis</strong></td><td>52 / 112</td><td class="hi">High</td><td class="hi">Strong</td><td>Moderate</td><td>★★ Strong</td></tr>
+          <tr><td>Breaking news</td><td class="lo">30 / 112</td><td class="lo">Low</td><td class="lo">Weak</td><td>Strong</td><td class="lo">★ Low priority</td></tr>
+          <tr><td>Entertainment</td><td class="lo">9 / 112</td><td class="lo">Very low</td><td class="lo">None</td><td>Moderate</td><td class="lo">✕ Deprioritise</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ DEMOGRAPHICS ════════════════ -->
+<div class="tab-section" id="tab-segments">
+  <div class="grid-2">
+    <div class="chart-card accent">
+      <div class="cc-label">Age Distribution</div>
+      <h3>Survey respondents by age group</h3>
+      <div class="cc-sub">Target demographic (18–34) represents 62% of total responses</div>
+      <div class="chart-wrap" style="height:260px;">
+        <canvas id="ageChart" role="img" aria-label="Bar chart of respondents by age group">Age distribution of survey respondents.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Employment Status</div>
+      <h3>Current employment / study status</h3>
+      <div class="cc-sub">57% full-time employed — B2B subscription path is viable</div>
+      <div class="chart-wrap" style="height:260px;">
+        <canvas id="statusChart" role="img" aria-label="Donut chart of employment status">Employment status breakdown.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <h2>Segment comparison</h2>
+    <div class="sd-line"></div>
+    <div class="sd-tag">18–34 vs 35–44</div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:1.25rem;">
+    <div class="cc-label">Cross-segment analysis</div>
+    <h3>How the 18–34 and 35–44 cohorts differ on key metrics</h3>
+    <div class="cc-sub">Younger readers are more social-first and AI-heavy; older readers have higher WTP and lower churn risk</div>
+    <div style="overflow-x:auto;margin-top:1rem;">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>18–34 (n=70)</th>
+            <th>35–44 (n=35)</th>
+            <th>Signal for BI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Primary discovery: social media</td><td class="hi">46% (32/70)</td><td>40% (14/35)</td><td>Both are social-first — own channel development critical</td></tr>
+          <tr><td>Uses AI to bypass paywalls</td><td class="hi">Frequently higher</td><td class="lo">Lower frequency</td><td>Younger cohort is a bigger paywall leakage risk</td></tr>
+          <tr><td>WTP $10+/month</td><td>16% (11/70)</td><td class="hi">23% (8/35)</td><td>Older readers will pay more — segment pricing makes sense</td></tr>
+          <tr><td>Employer subscription budget</td><td>41% (29/70)</td><td class="hi">43% (15/35)</td><td>Both strong — B2B path works for both cohorts</td></tr>
+          <tr><td>Prefers creator-led content</td><td class="hi">21% (15/70)</td><td>9% (3/35)</td><td>Creator strategy targets the younger, harder-to-convert cohort</td></tr>
+          <tr><td>Interested in company intelligence curation</td><td class="hi">71% (50/70)</td><td>69% (24/35)</td><td>Professional intelligence product has cross-cohort appeal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card">
+      <div class="cc-label">Key difference: WTP</div>
+      <h3>Willingness to pay by age cohort</h3>
+      <div class="cc-sub">35–44s are more willing to pay $10+/month</div>
+      <div class="chart-wrap" style="height:220px;">
+        <canvas id="segWtpChart" role="img" aria-label="Grouped bar chart comparing WTP between age cohorts">WTP by segment.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="cc-label">Key difference: Discovery</div>
+      <h3>News discovery channel by cohort</h3>
+      <div class="cc-sub">Both cohorts are social-first — but younger skews heavier</div>
+      <div class="chart-wrap" style="height:220px;">
+        <canvas id="segDiscChart" role="img" aria-label="Grouped bar chart comparing discovery channels between age cohorts">Discovery by segment.</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  Business Insider Engagement Strategy · Primary Research Survey · 2026 · <span>Consulting Team: Hanno · Amaan · Izzie · Icy · Praswanth</span> · Confidential
+</footer>
+
+<script>
+// ══════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════
+const DATA = {
+  all: {
+    n: 112,
+    discovery: [
+      { label: 'Social media', n: 49 },
+      { label: 'News website / app', n: 26 },
+      { label: 'News aggregator', n: 16 },
+      { label: 'Email newsletters', n: 13 },
+      { label: 'Word of mouth / Slack', n: 5 },
+    ],
+    habit: [
+      { label: 'Daily short updates', n: 73 },
+      { label: 'Personalized feed', n: 53 },
+      { label: 'Newsletters', n: 29 },
+      { label: 'Interactive features', n: 14 },
+    ],
+    payfor: [
+      { label: 'Helps my career', n: 64 },
+      { label: 'Deep analysis', n: 52 },
+      { label: 'Financial decisions', n: 49 },
+      { label: 'Breaking news', n: 30 },
+      { label: 'Story aggregation', n: 18 },
+      { label: 'Entertainment', n: 9 },
+    ],
+    wtp: [
+      { label: '$0–5/mo', n: 37 },
+      { label: '$5–10/mo', n: 31 },
+      { label: "Won't pay", n: 16 },
+      { label: '$10–20/mo', n: 17 },
+      { label: '$20+/mo', n: 5 },
+    ],
+    aiTrust: [
+      { label: 'Trust less, still read', n: 61 },
+      { label: 'Completely destroys trust', n: 20 },
+      { label: 'Would not pay for it', n: 15 },
+      { label: 'No impact', n: 14 },
+    ],
+    cancel: [
+      { label: "Didn't use it enough", n: 39 },
+      { label: 'Too expensive', n: 22 },
+      { label: 'Never paid for news', n: 18 },
+      { label: 'Never cancelled', n: 11 },
+      { label: 'Found it free elsewhere', n: 7 },
+    ],
+    jobprep: [
+      { label: 'News sites', n: 40 },
+      { label: 'Industry trades', n: 32 },
+      { label: 'Info aggregators (S&P etc)', n: 30 },
+      { label: 'Social media', n: 25 },
+      { label: 'Creator platforms', n: 12 },
+    ],
+    platforms: [
+      { label: 'New York Times', n: 71, cls: 'top1' },
+      { label: 'Wall Street Journal', n: 59, cls: 'top2' },
+      { label: 'Instagram', n: 57, cls: 'top2' },
+      { label: 'YouTube', n: 49, cls: 'top3' },
+      { label: 'Podcasts', n: 40, cls: 'top3' },
+      { label: 'X (Twitter)', n: 36, cls: 'top4' },
+      { label: 'The Economist', n: 31, cls: 'top4' },
+      { label: 'Bloomberg', n: 26, cls: 'top5' },
+      { label: 'Financial Times', n: 24, cls: 'top5' },
+      { label: 'TikTok', n: 23, cls: '' },
+    ],
+    subs: [
+      { label: 'New York Times', n: 40, cls: 'top1' },
+      { label: 'Wall Street Journal', n: 35, cls: 'top2' },
+      { label: 'The Economist', n: 12, cls: 'top3' },
+      { label: 'Bloomberg', n: 8, cls: 'top4' },
+      { label: 'None', n: 28, cls: '' },
+    ],
+  },
+  young: {
+    n: 70,
+    discovery: [
+      { label: 'Social media', n: 32 },
+      { label: 'News website / app', n: 16 },
+      { label: 'News aggregator', n: 9 },
+      { label: 'Email newsletters', n: 7 },
+      { label: 'Word of mouth / Slack', n: 3 },
+    ],
+    habit: [
+      { label: 'Daily short updates', n: 46 },
+      { label: 'Personalized feed', n: 34 },
+      { label: 'Newsletters', n: 18 },
+      { label: 'Interactive features', n: 9 },
+    ],
+    payfor: [
+      { label: 'Helps my career', n: 40 },
+      { label: 'Deep analysis', n: 30 },
+      { label: 'Financial decisions', n: 28 },
+      { label: 'Breaking news', n: 18 },
+      { label: 'Story aggregation', n: 12 },
+      { label: 'Entertainment', n: 6 },
+    ],
+    wtp: [
+      { label: '$0–5/mo', n: 24 },
+      { label: '$5–10/mo', n: 19 },
+      { label: "Won't pay", n: 12 },
+      { label: '$10–20/mo', n: 11 },
+      { label: '$20+/mo', n: 3 },
+    ],
+    aiTrust: [
+      { label: 'Trust less, still read', n: 38 },
+      { label: 'Completely destroys trust', n: 14 },
+      { label: 'Would not pay for it', n: 10 },
+      { label: 'No impact', n: 8 },
+    ],
+    cancel: [
+      { label: "Didn't use it enough", n: 26 },
+      { label: 'Too expensive', n: 15 },
+      { label: 'Never paid for news', n: 14 },
+      { label: 'Never cancelled', n: 6 },
+      { label: 'Found it free elsewhere', n: 5 },
+    ],
+    jobprep: [
+      { label: 'News sites', n: 25 },
+      { label: 'Industry trades', n: 19 },
+      { label: 'Info aggregators (S&P etc)', n: 17 },
+      { label: 'Social media', n: 18 },
+      { label: 'Creator platforms', n: 9 },
+    ],
+    platforms: [
+      { label: 'New York Times', n: 40, cls: 'top1' },
+      { label: 'Instagram', n: 38, cls: 'top2' },
+      { label: 'Wall Street Journal', n: 32, cls: 'top2' },
+      { label: 'YouTube', n: 30, cls: 'top3' },
+      { label: 'TikTok', n: 18, cls: 'top4' },
+      { label: 'Podcasts', n: 24, cls: 'top3' },
+      { label: 'X (Twitter)', n: 20, cls: 'top5' },
+    ],
+    subs: [
+      { label: 'New York Times', n: 22, cls: 'top1' },
+      { label: 'Wall Street Journal', n: 19, cls: 'top2' },
+      { label: 'The Economist', n: 6, cls: 'top3' },
+      { label: 'Bloomberg', n: 4, cls: 'top4' },
+      { label: 'None', n: 20, cls: '' },
+    ],
+  },
+  mid: {
+    n: 35,
+    discovery: [
+      { label: 'Social media', n: 14 },
+      { label: 'News website / app', n: 8 },
+      { label: 'News aggregator', n: 6 },
+      { label: 'Email newsletters', n: 5 },
+      { label: 'Word of mouth / Slack', n: 2 },
+    ],
+    habit: [
+      { label: 'Daily short updates', n: 22 },
+      { label: 'Personalized feed', n: 16 },
+      { label: 'Newsletters', n: 9 },
+      { label: 'Interactive features', n: 4 },
+    ],
+    payfor: [
+      { label: 'Helps my career', n: 20 },
+      { label: 'Deep analysis', n: 18 },
+      { label: 'Financial decisions', n: 17 },
+      { label: 'Breaking news', n: 10 },
+      { label: 'Story aggregation', n: 5 },
+      { label: 'Entertainment', n: 2 },
+    ],
+    wtp: [
+      { label: '$0–5/mo', n: 9 },
+      { label: '$5–10/mo', n: 9 },
+      { label: "Won't pay", n: 3 },
+      { label: '$10–20/mo', n: 8 },
+      { label: '$20+/mo', n: 2 },
+    ],
+    aiTrust: [
+      { label: 'Trust less, still read', n: 17 },
+      { label: 'Completely destroys trust', n: 5 },
+      { label: 'Would not pay for it', n: 4 },
+      { label: 'No impact', n: 5 },
+    ],
+    cancel: [
+      { label: "Didn't use it enough", n: 11 },
+      { label: 'Too expensive', n: 6 },
+      { label: 'Never paid for news', n: 3 },
+      { label: 'Never cancelled', n: 4 },
+      { label: 'Found it free elsewhere', n: 2 },
+    ],
+    jobprep: [
+      { label: 'News sites', n: 13 },
+      { label: 'Industry trades', n: 11 },
+      { label: 'Info aggregators (S&P etc)', n: 11 },
+      { label: 'Social media', n: 6 },
+      { label: 'Creator platforms', n: 3 },
+    ],
+    platforms: [
+      { label: 'New York Times', n: 27, cls: 'top1' },
+      { label: 'Wall Street Journal', n: 24, cls: 'top2' },
+      { label: 'The Economist', n: 18, cls: 'top3' },
+      { label: 'Podcasts', n: 14, cls: 'top4' },
+      { label: 'Bloomberg', n: 12, cls: 'top5' },
+      { label: 'Financial Times', n: 11, cls: '' },
+    ],
+    subs: [
+      { label: 'New York Times', n: 16, cls: 'top1' },
+      { label: 'Wall Street Journal', n: 14, cls: 'top2' },
+      { label: 'The Economist', n: 6, cls: 'top3' },
+      { label: 'Bloomberg', n: 4, cls: 'top4' },
+      { label: 'None', n: 7, cls: '' },
+    ],
+  },
+};
+
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
+let seg = 'all';
+let charts = {};
+
+// ══════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════
+function pct(n, total) { return Math.round((n / total) * 100); }
+
+function renderHBars(containerId, data, seg) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const mx = Math.max(...data.map(d => d.n));
+  el.innerHTML = data.map((d, i) => {
+    const w = Math.round((d.n / mx) * 100);
+    const bg = i === 0 ? '#CC0000' : i === 1 ? '#aa3333' : (i % 2 === 0 ? '#888' : '#aaa');
+    return `<div class="hbar-row" title="${d.label}: ${d.n} respondents (${pct(d.n, DATA[seg].n)}%)">
+      <div class="hbar-label">${d.label}</div>
+      <div class="hbar-track">
+        <div class="hbar-fill" style="width:${w}%;background:${bg};">
+          <span>${d.n}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderBubbles(containerId, data) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = data.map(d => `
+    <div class="bubble ${d.cls || ''}" title="${d.label}: ${d.n} respondents">
+      <span class="bubble-n">${d.n}</span> ${d.label}
+    </div>`).join('');
+}
+
+function destroyChart(id) {
+  if (charts[id]) { charts[id].destroy(); delete charts[id]; }
+}
+
+const RED = '#CC0000', DARK = '#1c1c1c', MID = '#888888', LIGHT = '#cccccc', VLIGHT = '#e8e8e8';
+
+// ══════════════════════════════════════════
+// CHART BUILDERS
+// ══════════════════════════════════════════
+function buildTimeChart() {
+  destroyChart('timeChart');
+  const ctx = document.getElementById('timeChart');
+  if (!ctx) return;
+  charts['timeChart'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Before 9am', '9am–12pm', 'Lunch 12–2pm', 'Afternoon 2–6pm', 'Evening 6–9pm', 'Late night 9pm+'],
+      datasets: [{
+        label: 'Respondents',
+        data: [62, 28, 22, 18, 35, 41],
+        backgroundColor: [RED, LIGHT, LIGHT, LIGHT, LIGHT, LIGHT],
+        borderRadius: 4,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.parsed.y} respondents mention this window` } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, color: '#666' }, grid: { display: false } },
+        y: { ticks: { font: { size: 11 }, color: '#888' }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
+
+function buildFormatChart(d) {
+  destroyChart('formatChart');
+  const ctx = document.getElementById('formatChart');
+  if (!ctx) return;
+  const n = d.n;
+  const contentN = d === DATA.all ? 79 : d === DATA.young ? 44 : 26;
+  const creatorN = d === DATA.all ? 19 : d === DATA.young ? 15 : 3;
+  const noprefN = d === DATA.all ? 13 : d === DATA.young ? 9 : 4;
+  const total = contentN + creatorN + noprefN;
+  const pctC = Math.round(contentN / total * 100);
+  document.getElementById('fmt-center-val').textContent = pctC + '%';
+  charts['formatChart'] = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Content-led', 'Creator-led', 'No preference'],
+      datasets: [{ data: [contentN, creatorN, noprefN], backgroundColor: [RED, '#888', '#ccc'], borderWidth: 0 }]
+    },
+    options: {
+      responsive: false, cutout: '68%',
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed} (${Math.round(c.parsed/total*100)}%)` } } }
+    }
+  });
+}
+
+function buildVideoChart(d) {
+  destroyChart('videoChart');
+  const ctx = document.getElementById('videoChart');
+  if (!ctx) return;
+  const base = d === DATA.young ? [44,22,16,10,5] : d === DATA.mid ? [16,8,6,3,1] : [48,24,18,11,2];
+  charts['videoChart'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Scroll on', 'Search online', 'Read full article', 'Similar videos', 'Nothing'],
+      datasets: [{ data: base, backgroundColor: [RED,'#888','#bbb','#ccc','#ddd'], borderRadius: 4, borderSkipped: false }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.parsed.y} respondents` } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, color: '#666' }, grid: { display: false } },
+        y: { ticks: { font: { size: 11 }, color: '#888' }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
+
+function buildAiReadChart(d) {
+  destroyChart('aiReadChart');
+  const ctx = document.getElementById('aiReadChart');
+  if (!ctx) return;
+  const vals = d === DATA.young ? [40,26,6] : d === DATA.mid ? [16,14,2] : [60,42,8];
+  charts['aiReadChart'] = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Only if very interesting', 'Yes, still read in full', 'No, AI summary is fine'],
+      datasets: [{ data: vals, backgroundColor: [RED, '#888', '#ccc'], borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } }
+    }
+  });
+}
+
+function buildAiTrustChart(d) {
+  destroyChart('aiTrustChart');
+  const ctx = document.getElementById('aiTrustChart');
+  if (!ctx) return;
+  const items = d.aiTrust;
+  charts['aiTrustChart'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: items.map(i => i.label),
+      datasets: [{ data: items.map(i => i.n), backgroundColor: [RED,'#aa2222','#cc4444','#ccc'], borderRadius: 4, borderSkipped: false }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.parsed.x} respondents (${pct(c.parsed.x, d.n)}%)` } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, color: '#888' }, grid: { color: '#f0f0f0' } },
+        y: { ticks: { font: { size: 11 }, color: '#555' }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+function buildAiUsageChart(d) {
+  destroyChart('aiUsageChart');
+  const ctx = document.getElementById('aiUsageChart');
+  if (!ctx) return;
+  const vals = d === DATA.young ? [26,20,15,11] : d === DATA.mid ? [10,9,7,5] : [38,31,25,18];
+  charts['aiUsageChart'] = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Never', 'Rarely', 'Occasionally', 'Daily'],
+      datasets: [{ data: vals, backgroundColor: ['#ccc','#aaa','#cc5555',RED], borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '55%',
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } }
+    }
+  });
+}
+
+function buildBypassChart(d) {
+  destroyChart('bypassChart');
+  const ctx = document.getElementById('bypassChart');
+  if (!ctx) return;
+  const vals = d === DATA.young ? [38,32,16] : d === DATA.mid ? [14,14,7] : [40,48,22];
+  charts['bypassChart'] = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Never', 'Occasionally', 'Frequently'],
+      datasets: [{ data: vals, backgroundColor: ['#ccc','#cc5555',RED], borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } }
+    }
+  });
+}
+
+function buildWtpChart(d) {
+  destroyChart('wtpChart');
+  const ctx = document.getElementById('wtpChart');
+  if (!ctx) return;
+  const items = d.wtp;
+  charts['wtpChart'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: items.map(i => i.label),
+      datasets: [{ data: items.map(i => i.n), backgroundColor: ['#ccc','#ccc','#ccc',RED,'#880000'], borderRadius: 4, borderSkipped: false }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.parsed.y} respondents (${pct(c.parsed.y, d.n)}%)` } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, color: '#666' }, grid: { display: false } },
+        y: { ticks: { font: { size: 11 }, color: '#888' }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
+
+function buildEmpChart(d) {
+  destroyChart('empChart');
+  const ctx = document.getElementById('empChart');
+  if (!ctx) return;
+  const vals = d === DATA.young ? [30,29,12] : d === DATA.mid ? [13,13,8] : [51,44,14];
+  charts['empChart'] = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['No', 'Yes', 'Not sure'],
+      datasets: [{ data: vals, backgroundColor: ['#ccc',RED,'#888'], borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } }
+    }
+  });
+}
+
+function buildAgeChart() {
+  destroyChart('ageChart');
+  const ctx = document.getElementById('ageChart');
+  if (!ctx) return;
+  charts['ageChart'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['18–24', '25–34', '35–44', '45–54', '55–64', '65+'],
+      datasets: [{ data: [23,47,35,5,1,1], backgroundColor: [RED,RED,'#888','#ccc','#ccc','#ccc'], borderRadius: 4, borderSkipped: false }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.parsed.y} respondents` } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, color: '#666' }, grid: { display: false } },
+        y: { ticks: { font: { size: 11 }, color: '#888' }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
+
+function buildStatusChart() {
+  destroyChart('statusChart');
+  const ctx = document.getElementById('statusChart');
+  if (!ctx) return;
+  charts['statusChart'] = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Full-time employed', 'Student', 'Part-time / freelance', 'Between roles', 'Other'],
+      datasets: [{ data: [64,35,6,3,2], backgroundColor: [RED,'#888','#aaa','#ccc','#ddd'], borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '50%',
+      plugins: { legend: { position: 'right', labels: { font: { size: 11 }, padding: 14 } }, tooltip: { callbacks: { label: c => ` ${c.parsed}` } } }
+    }
+  });
+}
+
+function buildSegWtpChart() {
+  destroyChart('segWtpChart');
+  const ctx = document.getElementById('segWtpChart');
+  if (!ctx) return;
+  charts['segWtpChart'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["$0–5", "$5–10", "Won't pay", "$10–20", "$20+"],
+      datasets: [
+        { label: '18–34', data: [24,19,12,11,3], backgroundColor: RED, borderRadius: 3 },
+        { label: '35–44', data: [9,9,3,8,2], backgroundColor: '#888', borderRadius: 3 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } }, tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${c.parsed.y}` } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, color: '#666' }, grid: { display: false } },
+        y: { ticks: { font: { size: 11 }, color: '#888' }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
+
+function buildSegDiscChart() {
+  destroyChart('segDiscChart');
+  const ctx = document.getElementById('segDiscChart');
+  if (!ctx) return;
+  charts['segDiscChart'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Social', 'News app', 'Aggregator', 'Email', 'WOM'],
+      datasets: [
+        { label: '18–34', data: [32,16,9,7,3], backgroundColor: RED, borderRadius: 3 },
+        { label: '35–44', data: [14,8,6,5,2], backgroundColor: '#888', borderRadius: 3 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } }, tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${c.parsed.y}` } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, color: '#666' }, grid: { display: false } },
+        y: { ticks: { font: { size: 11 }, color: '#888' }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
+
+// ══════════════════════════════════════════
+// FUNNEL STAGES
+// ══════════════════════════════════════════
+function buildFunnel() {
+  document.querySelectorAll('.funnel-stage').forEach(el => {
+    const pct = el.dataset.pct;
+    const color = el.dataset.color;
+    const label = el.dataset.label;
+    const sublabel = el.dataset.sublabel;
+    const n = el.dataset.n;
+    el.innerHTML = `<div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:${pct}%;min-width:60px;height:36px;background:${color};border-radius:4px;display:flex;align-items:center;padding:0 12px;transition:width 0.4s;">
+        <span style="font-size:12px;font-weight:700;color:#fff;white-space:nowrap;">${n}</span>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--text);">${label}</div>
+        <div style="font-size:11px;color:var(--text3);">${sublabel}</div>
+      </div>
+    </div>`;
+  });
+}
+
+// ══════════════════════════════════════════
+// RENDER ALL
+// ══════════════════════════════════════════
+function renderAll() {
+  const d = DATA[seg];
+
+  // Overview
+  renderHBars('overview-disc', d.discovery, seg);
+  renderHBars('overview-pay', d.payfor, seg);
+  renderHBars('overview-habit', d.habit, seg);
+  renderBubbles('overview-platforms', d.platforms);
+
+  // Discovery tab
+  renderHBars('disc-discovery', d.discovery, seg);
+  renderHBars('disc-habit', d.habit, seg);
+  renderBubbles('disc-subs', d.subs);
+  buildFormatChart(d);
+
+  // Video tab
+  buildVideoChart(d);
+  buildAiReadChart(d);
+  renderHBars('video-jobprep', d.jobprep, seg);
+
+  // AI tab
+  buildAiTrustChart(d);
+  buildAiUsageChart(d);
+  buildBypassChart(d);
+
+  // Money tab
+  buildWtpChart(d);
+  renderHBars('money-payfor', d.payfor, seg);
+  buildEmpChart(d);
+  renderHBars('money-cancel', d.cancel, seg);
+
+  // KPIs
+  document.getElementById('kpi-social').textContent = d.discovery[0].n;
+  document.getElementById('kpi-social-d').textContent = `${pct(d.discovery[0].n, d.n)}% of total — #1 channel`;
+  document.getElementById('kpi-career').textContent = d.payfor[0].n;
+  const wtpHigh = d.wtp.filter(w => !w.label.includes("Won't")).reduce((s,w) => s + w.n, 0);
+  document.getElementById('kpi-wtp').textContent = pct(wtpHigh, d.n) + '%';
+  const empYes = d === DATA.young ? 29 : d === DATA.mid ? 13 : 44;
+  document.getElementById('kpi-employer').textContent = pct(empYes, d.n) + '%';
+  document.getElementById('resp-badge').innerHTML = `Showing <strong>${d.n}</strong> respondents`;
+
+  buildFunnel();
+}
+
+// ══════════════════════════════════════════
+// ONCE-ONLY CHARTS (not segment-dependent)
+// ══════════════════════════════════════════
+function renderOnce() {
+  buildTimeChart();
+  buildAgeChart();
+  buildStatusChart();
+  buildSegWtpChart();
+  buildSegDiscChart();
+}
+
+// ══════════════════════════════════════════
+// TAB SWITCHING
+// ══════════════════════════════════════════
+function switchTab(id) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+
+  // Rebuild charts that are in that tab to fix size issues
+  setTimeout(() => {
+    if (id === 'discovery') { buildTimeChart(); buildFormatChart(DATA[seg]); }
+    if (id === 'video') { buildVideoChart(DATA[seg]); buildAiReadChart(DATA[seg]); }
+    if (id === 'ai') { buildAiTrustChart(DATA[seg]); buildAiUsageChart(DATA[seg]); buildBypassChart(DATA[seg]); }
+    if (id === 'money') { buildWtpChart(DATA[seg]); buildEmpChart(DATA[seg]); }
+    if (id === 'segments') { buildAgeChart(); buildStatusChart(); buildSegWtpChart(); buildSegDiscChart(); }
+  }, 50);
+}
+
+// ══════════════════════════════════════════
+// SEGMENT SWITCHING
+// ══════════════════════════════════════════
+function setSeg(s, btn) {
+  seg = s;
+  document.querySelectorAll('.seg-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  renderAll();
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', () => {
+  renderAll();
+  renderOnce();
+});
+</script>
+</body>
+</html>
