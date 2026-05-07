@@ -2130,7 +2130,29 @@ const SLIDES_HTML = [
   <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026</span><span>1 / 15</span></div>
 </div>`,
 
-// ── SLIDE 2 ── Methodology
+// ── SLIDE 2 ── Recommendations overview
+`<div class="sl sl-light">
+  <div class="sl-accent-bar"></div>
+  <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;display:flex;flex-direction:column;">
+    <div class="sl-top-tag" style="color:var(--red);">Our Recommendations · Overview</div>
+    <div class="sl-title" style="font-size:16px;margin-top:28px;color:#111;max-width:720px;">Three Workstreams Address the Problem in Sequence,<br>and Each One Sets Up the Next</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px;flex:1;">
+      ${[['01','Reporter-as-Creator and Social Funnel','Fix the handoff from social discovery to BI\'s owned ecosystem. Named reporter-led short-form video formats paired with a referral mechanic that removes paywall friction entirely on first touch.'],
+         ['02','Free Daily Briefing and Newsletter Verticals','Build a daily reading ritual before asking for money. A free personalized briefing builds the habit. Two career-utility newsletter verticals, Money Memo and Career Dispatch, are the subscription offer that follows.'],
+         ['03','AI as Production Force-Multiplier','Scale output without diluting editorial trust. A phased 90-day AI pilot expands BI\'s production capacity. Human reporters retain editorial voice and judgment at every stage.']
+      ].map(([n,t,d])=>`<div style="display:flex;gap:16px;align-items:flex-start;background:rgba(0,0,0,0.04);border-radius:6px;padding:14px 16px;border-left:4px solid var(--red);">
+        <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0;">${n}</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#111;margin-bottom:4px;">${t}</div>
+          <div style="font-size:10.5px;color:#555;line-height:1.5;">${d}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>
+  <div class="sl-footer" style="color:#aaa;"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>2 / 15</span></div>
+</div>`,
+
+// ── SLIDE 3 ── Methodology
 `<div class="sl sl-dark">
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;display:flex;flex-direction:column;">
@@ -2161,29 +2183,7 @@ const SLIDES_HTML = [
       </div>
     </div>
   </div>
-  <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>2 / 15</span></div>
-</div>`,
-
-// ── SLIDE 3 ── Recommendations overview
-`<div class="sl sl-light">
-  <div class="sl-accent-bar"></div>
-  <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;display:flex;flex-direction:column;">
-    <div class="sl-top-tag" style="color:var(--red);">Our Recommendations · Overview</div>
-    <div class="sl-title" style="font-size:16px;margin-top:28px;color:#111;max-width:720px;">Three Workstreams Address the Problem in Sequence,<br>and Each One Sets Up the Next</div>
-    <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px;flex:1;">
-      ${[['01','Reporter-as-Creator and Social Funnel','Fix the handoff from social discovery to BI\'s owned ecosystem. Named reporter-led short-form video formats paired with a referral mechanic that removes paywall friction entirely on first touch.'],
-         ['02','Free Daily Briefing and Newsletter Verticals','Build a daily reading ritual before asking for money. A free personalized briefing builds the habit. Two career-utility newsletter verticals, Money Memo and Career Dispatch, are the subscription offer that follows.'],
-         ['03','AI as Production Force-Multiplier','Scale output without diluting editorial trust. A phased 90-day AI pilot expands BI\'s production capacity. Human reporters retain editorial voice and judgment at every stage.']
-      ].map(([n,t,d])=>`<div style="display:flex;gap:16px;align-items:flex-start;background:rgba(0,0,0,0.04);border-radius:6px;padding:14px 16px;border-left:4px solid var(--red);">
-        <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0;">${n}</div>
-        <div>
-          <div style="font-size:12px;font-weight:700;color:#111;margin-bottom:4px;">${t}</div>
-          <div style="font-size:10.5px;color:#555;line-height:1.5;">${d}</div>
-        </div>
-      </div>`).join('')}
-    </div>
-  </div>
-  <div class="sl-footer" style="color:#aaa;"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>3 / 15</span></div>
+  <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>3 / 15</span></div>
 </div>`,
 
 // ── SLIDE 4 ── Research: Audience Habits
