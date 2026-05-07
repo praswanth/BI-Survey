@@ -2130,23 +2130,25 @@ const SLIDES_HTML = [
   <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026</span><span>1 / 15</span></div>
 </div>`,
 
-// ── SLIDE 2 ── Recommendations overview
+// ── SLIDE 2 ── Recommendations Overview
 `<div class="sl sl-light">
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;display:flex;flex-direction:column;">
     <div class="sl-top-tag" style="color:var(--red);">Our Recommendations · Overview</div>
     <div class="sl-title" style="font-size:16px;margin-top:28px;color:#111;max-width:720px;">Three Workstreams Address the Problem in Sequence,<br>and Each One Sets Up the Next</div>
-    <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px;flex:1;">
-      ${[['01','Reporter-as-Creator and Social Funnel','Fix the handoff from social discovery to BI\'s owned ecosystem. Named reporter-led short-form video formats paired with a referral mechanic that removes paywall friction entirely on first touch.'],
-         ['02','Free Daily Briefing and Newsletter Verticals','Build a daily reading ritual before asking for money. A free personalized briefing builds the habit. Two career-utility newsletter verticals, Money Memo and Career Dispatch, are the subscription offer that follows.'],
-         ['03','AI as Production Force-Multiplier','Scale output without diluting editorial trust. A phased 90-day AI pilot expands BI\'s production capacity. Human reporters retain editorial voice and judgment at every stage.']
-      ].map(([n,t,d])=>`<div style="display:flex;gap:16px;align-items:flex-start;background:rgba(0,0,0,0.04);border-radius:6px;padding:14px 16px;border-left:4px solid var(--red);">
-        <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0;">${n}</div>
-        <div>
-          <div style="font-size:12px;font-weight:700;color:#111;margin-bottom:4px;">${t}</div>
-          <div style="font-size:10.5px;color:#555;line-height:1.5;">${d}</div>
-        </div>
-      </div>`).join('')}
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:22px;flex:1;">
+      <div style="display:flex;gap:16px;align-items:flex-start;background:rgba(0,0,0,0.04);border-radius:6px;padding:16px;border-left:4px solid var(--red);">
+        <div style="font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0;width:40px;">01</div>
+        <div><div style="font-size:12px;font-weight:700;color:#111;margin-bottom:4px;">Reporter-as-Creator and Social Funnel</div><div style="font-size:10.5px;color:#555;line-height:1.5;">Fix the handoff from social discovery to BI's owned ecosystem. Named reporter-led short-form video formats paired with a referral mechanic that removes paywall friction entirely on first touch.</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;background:rgba(0,0,0,0.04);border-radius:6px;padding:16px;border-left:4px solid var(--red);">
+        <div style="font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0;width:40px;">02</div>
+        <div><div style="font-size:12px;font-weight:700;color:#111;margin-bottom:4px;">Free Daily Briefing and Newsletter Verticals</div><div style="font-size:10.5px;color:#555;line-height:1.5;">Build a daily reading ritual before asking for money. A free personalized briefing builds the habit. Two career-utility newsletter verticals, Money Memo and Career Dispatch, are the subscription offer that follows.</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;background:rgba(0,0,0,0.04);border-radius:6px;padding:16px;border-left:4px solid var(--red);">
+        <div style="font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0;width:40px;">03</div>
+        <div><div style="font-size:12px;font-weight:700;color:#111;margin-bottom:4px;">AI as Production Force-Multiplier</div><div style="font-size:10.5px;color:#555;line-height:1.5;">Scale output without diluting editorial trust. A phased 90-day AI pilot expands BI's production capacity. Human reporters retain editorial voice and judgment at every stage.</div></div>
+      </div>
     </div>
   </div>
   <div class="sl-footer" style="color:#aaa;"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>2 / 15</span></div>
@@ -2161,25 +2163,20 @@ const SLIDES_HTML = [
     <div style="display:flex;gap:16px;margin-top:18px;flex:1;">
       <div style="flex:1;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Secondary Research · Four Pillars</div>
-        <div class="sl-grid2" style="gap:10px;">
-          ${[['01','Vertical Video Mechanics','Reporter-led format testing, 3-second hook analysis and mobile-first retention metrics'],
-             ['02','Market Gap Analysis','Competitive audits of NYT, WSJ, Bloomberg and Substack to find underserved verticals'],
-             ['03','Growth and Monetization','Referral mechanics, paywall friction mapping and employer-bundle pricing strategy'],
-             ['04','AI Strategy and Trust','How AI affects reader trust, paywall bypass behavior and content production capacity']
-          ].map(([n,t,d])=>`<div class="sl-box" style="padding:10px;">
-            <div style="font-size:18px;font-weight:800;font-family:var(--font-head);color:var(--red);line-height:1;">${n}</div>
-            <div style="font-size:11px;font-weight:600;margin:4px 0 2px;">${t}</div>
-            <div style="font-size:9.5px;opacity:0.6;line-height:1.4;">${d}</div>
-          </div>`).join('')}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:12px;border-left:3px solid var(--red);"><div style="font-size:20px;font-weight:800;font-family:var(--font-head);color:var(--red);line-height:1;">01</div><div style="font-size:11px;font-weight:600;margin:5px 0 3px;">Vertical Video Mechanics</div><div style="font-size:9.5px;opacity:0.6;line-height:1.4;">Reporter-led format testing, 3-second hook analysis and mobile-first retention metrics</div></div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:12px;border-left:3px solid var(--red);"><div style="font-size:20px;font-weight:800;font-family:var(--font-head);color:var(--red);line-height:1;">02</div><div style="font-size:11px;font-weight:600;margin:5px 0 3px;">Market Gap Analysis</div><div style="font-size:9.5px;opacity:0.6;line-height:1.4;">Competitive audits of NYT, WSJ, Bloomberg and Substack to find underserved verticals</div></div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:12px;border-left:3px solid var(--red);"><div style="font-size:20px;font-weight:800;font-family:var(--font-head);color:var(--red);line-height:1;">03</div><div style="font-size:11px;font-weight:600;margin:5px 0 3px;">Growth and Monetization</div><div style="font-size:9.5px;opacity:0.6;line-height:1.4;">Referral mechanics, paywall friction mapping and employer-bundle pricing strategy</div></div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:12px;border-left:3px solid var(--red);"><div style="font-size:20px;font-weight:800;font-family:var(--font-head);color:var(--red);line-height:1;">04</div><div style="font-size:11px;font-weight:600;margin:5px 0 3px;">AI Strategy and Trust</div><div style="font-size:9.5px;opacity:0.6;line-height:1.4;">How AI affects reader trust, paywall bypass behavior and content production capacity</div></div>
         </div>
       </div>
       <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
-      <div style="width:220px;flex-shrink:0;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Primary Survey · What We Found</div>
-        ${[['112','Total survey respondents'],['70','Aged 18–34 (target segment)'],['30','Questions across all 4 pillars'],['63%','Majority in core demographic']].map(([n,l])=>`<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.07);">
-          <div class="sl-stat sl-stat-sm">${n}</div><div class="sl-label" style="font-size:10px;">${l}</div>
-        </div>`).join('')}
-        <div style="font-size:9.5px;opacity:0.55;line-height:1.5;margin-top:6px;font-style:italic;">We went wide across 112 respondents to find patterns, and deep into four research pillars to understand the competitive context.</div>
+      <div style="width:210px;flex-shrink:0;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Primary Survey · What We Found</div>
+        <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">112</div><div style="font-size:10px;opacity:0.55;margin-top:2px;">Total survey respondents</div></div>
+        <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">70</div><div style="font-size:10px;opacity:0.55;margin-top:2px;">Aged 18–34 (target segment)</div></div>
+        <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">30</div><div style="font-size:10px;opacity:0.55;margin-top:2px;">Questions across all 4 pillars</div></div>
+        <div><div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">63%</div><div style="font-size:10px;opacity:0.55;margin-top:2px;">Majority in core demographic</div></div>
       </div>
     </div>
   </div>
@@ -2190,25 +2187,34 @@ const SLIDES_HTML = [
 `<div class="sl sl-light">
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
-    <div class="sl-top-tag" style="color:var(--red);">Research · Audience Habits</div>
-    <div class="sl-title" style="font-size:15px;margin-top:28px;color:#111;max-width:760px;">Social Media Is BI's Primary Discovery Channel, But Readers Arrive Through<br>Platforms BI Cannot Monetize</div>
-    <div style="display:flex;gap:20px;margin-top:16px;">
-      <div style="flex:1;display:flex;flex-direction:column;gap:12px;">
-        ${[['BI\'s reach is borrowed, not owned','49 of 112 respondents discover news first on social. BI\'s content is found on TikTok, Instagram and YouTube, platforms that capture engagement value without returning it to BI.'],
-           ['Email is an underused loyalty asset','Only 13 respondents cite newsletters as their primary discovery channel, despite newsletters delivering the highest subscription conversion rates in digital media.'],
-           ['The morning window is the key activation moment','Early morning before 9am is the number one consumption time slot. BI\'s notification and newsletter cadence should target 6–8am to compete for this daily habit window.']
-        ].map(([t,d])=>`<div class="sl-box-light" style="padding:12px;">
-          <div style="font-size:11px;font-weight:700;color:#111;margin-bottom:4px;">${t}</div>
-          <div style="font-size:10px;color:#555;line-height:1.5;">${d}</div>
-        </div>`).join('')}
+    <div class="sl-top-tag" style="color:var(--red);">Research · Audience Habits · Primary Survey n=112</div>
+    <div class="sl-title" style="font-size:14px;margin-top:26px;color:#111;">Social Media Is BI's Primary Discovery Channel, But Readers Arrive Through Platforms BI Cannot Monetize</div>
+    <div style="display:flex;gap:18px;margin-top:12px;">
+      <div style="flex:1;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">How readers first discover news</div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Social media</span><span style="font-size:10px;font-weight:700;color:var(--red);">44%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:44%;background:var(--red);border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">News website / app</span><span style="font-size:10px;font-weight:700;color:#888;">23%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:23%;background:#aaa;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">News aggregators</span><span style="font-size:10px;font-weight:700;color:#888;">14%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:14%;background:#bbb;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Email newsletters</span><span style="font-size:10px;font-weight:700;color:#888;">12%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:12%;background:#ccc;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Word of mouth / Slack</span><span style="font-size:10px;font-weight:700;color:#888;">4%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:4%;background:#ddd;border-radius:3px;"></div></div></div>
+        <div style="margin-top:12px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">When readers check news</div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Early morning (before 9am) ★</span><span style="font-size:10px;font-weight:700;color:var(--red);">63%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:63%;background:var(--red);border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Late morning (9am–12pm)</span><span style="font-size:10px;font-weight:700;color:#888;">44%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:44%;background:#bbb;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Late night (after 9pm)</span><span style="font-size:10px;font-weight:700;color:#888;">43%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:43%;background:#bbb;border-radius:3px;"></div></div></div>
       </div>
       <div style="width:220px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:2px;">Primary Survey · n=112</div>
-        ${[['49','discover news via social first','100'],['63%','early morning consumption window','63'],['13','cite newsletters as primary channel','12']].map(([n,l,w])=>`<div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:12px;">
-          <div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">${n}</div>
-          <div style="font-size:10px;color:#555;margin-top:2px;">${l}</div>
-          <div style="height:4px;background:rgba(0,0,0,0.08);border-radius:2px;margin-top:8px;overflow:hidden;"><div style="height:100%;width:${w}%;background:var(--red);border-radius:2px;"></div></div>
-        </div>`).join('')}
+        <div style="background:rgba(0,0,0,0.04);border-radius:8px;padding:14px;border-left:3px solid var(--red);">
+          <div style="font-size:10px;font-weight:700;color:#111;margin-bottom:4px;">BI's reach is borrowed, not owned</div>
+          <div style="font-size:9.5px;color:#555;line-height:1.5;">49 of 112 respondents discover news first on social. BI's content is found on TikTok, Instagram and YouTube — platforms that capture engagement without returning it to BI.</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:8px;padding:14px;border-left:3px solid #ccc;">
+          <div style="font-size:10px;font-weight:700;color:#111;margin-bottom:4px;">Email is an underused loyalty asset</div>
+          <div style="font-size:9.5px;color:#555;line-height:1.5;">Only 13 respondents cite newsletters as their primary discovery channel, despite newsletters delivering the highest subscription conversion rates in digital media.</div>
+        </div>
+        <div style="background:#fef5f5;border-radius:8px;padding:14px;border-left:3px solid var(--red);">
+          <div style="font-size:9px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">The morning window</div>
+          <div style="font-size:9.5px;color:#7a0000;line-height:1.5;">Early morning before 9am is the #1 consumption slot. BI's cadence should target <strong>6–8am</strong> to compete for this daily habit window.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -2219,27 +2225,34 @@ const SLIDES_HTML = [
 `<div class="sl sl-light">
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
-    <div class="sl-top-tag" style="color:var(--red);">Research · Video Behavior</div>
-    <div class="sl-title" style="font-size:15px;margin-top:28px;color:#111;">43% Scroll Past After a News Video; BI Captures Only 16% Who Seek the Full Article</div>
-    <div style="display:flex;gap:20px;margin-top:16px;align-items:flex-start;">
-      <div style="display:flex;gap:28px;align-items:flex-start;">
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-head);font-size:48px;font-weight:800;color:var(--red);line-height:1;">43%</div>
-          <div style="font-size:10px;color:#555;margin-top:4px;max-width:100px;">scroll past without<br>engaging further</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-head);font-size:48px;font-weight:800;color:#888;line-height:1;">16%</div>
-          <div style="font-size:10px;color:#555;margin-top:4px;max-width:100px;">seek the full<br>article on BI</div>
-        </div>
+    <div class="sl-top-tag" style="color:var(--red);">Research · Video Behavior · Primary Survey n=112</div>
+    <div class="sl-title" style="font-size:14px;margin-top:26px;color:#111;">43% Scroll Past After a News Video; BI Captures Only 16% Who Seek the Full Article</div>
+    <div style="display:flex;gap:20px;margin-top:14px;">
+      <div style="flex:1;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">After watching a short-form news video, what do you do?</div>
+        <div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;font-weight:600;">Scroll past to next video</span><span style="font-size:10px;font-weight:700;color:var(--red);">44%</span></div><div style="height:10px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:44%;background:var(--red);border-radius:3px;"></div></div><div style="font-size:8.5px;color:#999;margin-top:2px;">48 of 110 respondents — the biggest conversion leak</div></div>
+        <div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Search online for more</span><span style="font-size:10px;font-weight:700;color:#888;">22%</span></div><div style="height:10px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:22%;background:#bbb;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;font-weight:600;">Look for the full article ★</span><span style="font-size:10px;font-weight:700;color:#444;">16%</span></div><div style="height:10px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:16%;background:#444;border-radius:3px;"></div></div><div style="font-size:8.5px;color:#999;margin-top:2px;">BI's current capture rate — target: 35%</div></div>
+        <div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Browse similar videos</span><span style="font-size:10px;font-weight:700;color:#aaa;">10%</span></div><div style="height:10px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:10%;background:#ccc;border-radius:3px;"></div></div></div>
+        <div style="margin-top:14px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Content format preference</div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Content-led (objective reporting)</span><span style="font-size:10px;font-weight:700;color:var(--red);">71%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:71%;background:var(--red);border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Creator-led (personality-driven)</span><span style="font-size:10px;font-weight:700;color:#888;">17%</span></div><div style="height:7px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:17%;background:#aaa;border-radius:3px;"></div></div></div>
       </div>
-      <div style="flex:1;border-left:1px solid rgba(0,0,0,0.1);padding-left:20px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#111;margin-bottom:10px;">How to close the gap</div>
-        ${[['A reporter visible in the first 3 seconds drives significantly higher retention than a title card or voiceover alone'],
-           ['Embedding an article link as an on-screen call to action captures the 16% already looking for more'],
-           ['A referral mechanic replaces paywall friction with peer trust at the moment of conversion']
-        ].map(([d])=>`<div class="sl-bullet"><div class="sl-bullet-dot"></div><div style="font-size:10.5px;color:#555;line-height:1.5;">${d}</div></div>`).join('')}
-        <div style="margin-top:12px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);">Secondary Research</div>
-        <div style="font-size:10px;color:#555;margin-top:4px;line-height:1.5;">Reporter visible in first 3 seconds → significantly higher retention than title card or voiceover alone.</div>
+      <div style="width:230px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:2px;">How to close the gap</div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:11px;border-left:3px solid var(--red);">
+          <div style="font-size:9.5px;color:#444;line-height:1.5;"><strong>Reporter visible in first 3 seconds</strong> drives significantly higher retention than a title card or voiceover alone</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:11px;border-left:3px solid #aaa;">
+          <div style="font-size:9.5px;color:#444;line-height:1.5;">Embedding an <strong>article link as on-screen CTA</strong> captures the 16% already looking for more</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:11px;border-left:3px solid #aaa;">
+          <div style="font-size:9.5px;color:#444;line-height:1.5;">A <strong>referral mechanic</strong> replaces paywall friction with peer trust at the moment of conversion</div>
+        </div>
+        <div style="background:#fef5f5;border-radius:6px;padding:11px;border-left:3px solid var(--red);">
+          <div style="font-size:9px;font-weight:700;color:var(--red);margin-bottom:3px;">TARGET</div>
+          <div style="font-size:9.5px;color:#7a0000;line-height:1.5;">Raise article click-through from <strong>16% → 35%</strong> with embedded CTAs + reporter-led bridges</div>
+        </div>
       </div>
     </div>
   </div>
@@ -2250,24 +2263,39 @@ const SLIDES_HTML = [
 `<div class="sl sl-light">
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
-    <div class="sl-top-tag" style="color:var(--red);">Research · AI and Trust</div>
-    <div class="sl-title" style="font-size:15px;margin-top:28px;color:#111;">84% Say AI-Written Content Erodes Trust, Yet 63% Already Use AI to Bypass BI's Paywall</div>
-    <div style="display:flex;gap:20px;margin-top:16px;">
-      <div style="display:flex;gap:28px;align-items:flex-start;flex-shrink:0;">
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-head);font-size:48px;font-weight:800;color:var(--red);line-height:1;">63%</div>
-          <div style="font-size:10px;color:#555;margin-top:4px;max-width:100px;">use AI to bypass<br>paywalls occasionally</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-head);font-size:48px;font-weight:800;color:#888;line-height:1;">55%</div>
-          <div style="font-size:10px;color:#555;margin-top:4px;max-width:110px;">still read with visible<br>human sign-off</div>
-        </div>
+    <div class="sl-top-tag" style="color:var(--red);">Research · AI and Trust · Primary Survey n=112</div>
+    <div class="sl-title" style="font-size:14px;margin-top:26px;color:#111;">84% Say AI-Written Content Erodes Trust, Yet 63% Already Use AI to Bypass BI's Paywall</div>
+    <div style="display:flex;gap:20px;margin-top:14px;">
+      <div style="flex:1;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">If an article is written/helped by AI, how does that affect your trust?</div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Trust less — but still read</span><span style="font-size:10px;font-weight:700;color:var(--red);">55%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:55%;background:var(--red);border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Completely destroys trust</span><span style="font-size:10px;font-weight:700;color:#aa3333;">18%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:18%;background:#aa3333;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Would not pay for it</span><span style="font-size:10px;font-weight:700;color:#cc5555;">14%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:14%;background:#cc5555;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">No impact on trust</span><span style="font-size:10px;font-weight:700;color:#888;">13%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:13%;background:#bbb;border-radius:3px;"></div></div></div>
+        <div style="margin-top:3px;font-size:9px;color:#aaa;font-style:italic;">Combined negative impact: 84%</div>
+        <div style="margin-top:14px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">How often do you use AI to bypass paywalls?</div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Never</span><span style="font-size:10px;font-weight:700;color:#888;">36%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:36%;background:#ccc;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Occasionally</span><span style="font-size:10px;font-weight:700;color:var(--red);">44%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:44%;background:var(--red);border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Frequently</span><span style="font-size:10px;font-weight:700;color:#aa3333;">20%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:20%;background:#aa3333;border-radius:3px;"></div></div></div>
       </div>
-      <div style="flex:1;border-left:1px solid rgba(0,0,0,0.1);padding-left:20px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#111;margin-bottom:8px;">What this means for BI</div>
-        <div style="font-size:10.5px;color:#555;line-height:1.6;margin-bottom:10px;">AI is most dangerous as a substitute for human journalism. BI's competitive advantage is its named reporters, editorial point of view and institutional credibility. None of these can be replicated by a language model.</div>
-        <div style="background:#fef5f5;border-left:3px solid var(--red);padding:10px;border-radius:0 6px 6px 0;font-size:10px;color:#7a0000;line-height:1.5;">
-          <strong>RISK:</strong> Readers who habitually use AI to summarize BI articles have a significantly lower subscription conversion probability. Reducing paywall friction is a parallel priority.
+      <div style="width:230px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:16px;margin-bottom:4px;">
+          <div style="text-align:center;flex:1;background:rgba(0,0,0,0.04);border-radius:8px;padding:12px;">
+            <div style="font-family:var(--font-head);font-size:34px;font-weight:800;color:var(--red);line-height:1;">63%</div>
+            <div style="font-size:9px;color:#555;margin-top:4px;line-height:1.4;">use AI to bypass paywalls at least occasionally</div>
+          </div>
+          <div style="text-align:center;flex:1;background:rgba(0,0,0,0.04);border-radius:8px;padding:12px;">
+            <div style="font-family:var(--font-head);font-size:34px;font-weight:800;color:#888;line-height:1;">55%</div>
+            <div style="font-size:9px;color:#555;margin-top:4px;line-height:1.4;">still read with visible human sign-off</div>
+          </div>
+        </div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:8px;padding:12px;border-left:3px solid #aaa;">
+          <div style="font-size:10px;font-weight:700;color:#111;margin-bottom:4px;">What this means for BI</div>
+          <div style="font-size:9.5px;color:#555;line-height:1.5;">AI is most dangerous as a substitute for human journalism. BI's competitive advantage is its named reporters, editorial point of view and institutional credibility.</div>
+        </div>
+        <div style="background:#fef5f5;border-left:3px solid var(--red);padding:10px 12px;border-radius:0 6px 6px 0;">
+          <div style="font-size:9px;font-weight:700;color:var(--red);margin-bottom:3px;">RISK</div>
+          <div style="font-size:9.5px;color:#7a0000;line-height:1.5;">Readers who habitually use AI to summarize BI articles have significantly lower subscription conversion probability.</div>
         </div>
       </div>
     </div>
@@ -2279,32 +2307,27 @@ const SLIDES_HTML = [
 `<div class="sl sl-light">
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
-    <div class="sl-top-tag" style="color:var(--red);">Research · Monetization and Market Gaps</div>
-    <div class="sl-title" style="font-size:14px;margin-top:28px;color:#111;">Career Utility Unlocks Willingness to Pay; BI Underserves the Three Verticals This Audience Values Most</div>
-    <div style="display:flex;gap:16px;margin-top:14px;">
-      <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
-        ${[['HIGH','Personal Finance','Morning Brew leads here; BI wins on data journalism depth and source access'],
-           ['HIGH','Career Development','LinkedIn dominates on reach; BI beats them on reporting depth and insider access'],
-           ['GROWING','Entrepreneurship','Substack and podcast creators own this; BI has no dedicated newsletter presence']
-        ].map(([badge,t,d])=>`<div class="sl-box-light" style="display:flex;gap:12px;align-items:flex-start;padding:11px 13px;">
-          <div style="display:inline-block;background:${badge==='HIGH'?'var(--red)':'#cc6600'};color:#fff;font-size:8px;font-weight:700;padding:3px 6px;border-radius:3px;letter-spacing:0.08em;flex-shrink:0;margin-top:2px;">${badge}</div>
-          <div><div style="font-size:11px;font-weight:700;color:#111;margin-bottom:2px;">${t}</div><div style="font-size:9.5px;color:#555;line-height:1.4;">${d}</div></div>
-        </div>`).join('')}
+    <div class="sl-top-tag" style="color:var(--red);">Research · Monetization and Market Gaps · Primary Survey n=112</div>
+    <div class="sl-title" style="font-size:14px;margin-top:26px;color:#111;">Career Utility Unlocks Willingness to Pay; BI Underserves the Three Verticals This Audience Values Most</div>
+    <div style="display:flex;gap:18px;margin-top:14px;">
+      <div style="flex:1;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">What content would you pay for? (select all)</div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Helps my career</span><span style="font-size:10px;font-weight:700;color:var(--red);">58%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:58%;background:var(--red);border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Deep explanations / analysis</span><span style="font-size:10px;font-weight:700;color:#888;">47%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:47%;background:#aa3333;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Helps financial decisions</span><span style="font-size:10px;font-weight:700;color:#888;">45%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:45%;background:#cc5555;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Breaking news</span><span style="font-size:10px;font-weight:700;color:#aaa;">27%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:27%;background:#bbb;border-radius:3px;"></div></div></div>
+        <div style="margin-top:12px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Max monthly spend on news (n=108)</div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">$0–5 / month</span><span style="font-size:10px;font-weight:700;color:#888;">34%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:34%;background:#ccc;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">$5–10 / month</span><span style="font-size:10px;font-weight:700;color:#888;">29%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:29%;background:#bbb;border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">$10–20 / month</span><span style="font-size:10px;font-weight:700;color:var(--red);">16%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:16%;background:var(--red);border-radius:3px;"></div></div></div>
+        <div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:10px;color:#444;">Wouldn't pay</span><span style="font-size:10px;font-weight:700;color:#aaa;">15%</span></div><div style="height:8px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;"><div style="height:100%;width:15%;background:#ddd;border-radius:3px;"></div></div></div>
       </div>
-      <div style="width:220px;flex-shrink:0;display:flex;flex-direction:column;gap:8px;">
-        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:12px;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:6px;">Primary Survey n=112</div>
-          <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--red);">58%</div>
-          <div style="font-size:10px;color:#555;line-height:1.4;">would pay for career-utility content — #1 value driver</div>
-        </div>
-        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:12px;">
-          <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--red);">40%</div>
-          <div style="font-size:10px;color:#555;line-height:1.4;">employer provides a subscription budget — B2B path validated</div>
-        </div>
-        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:12px;">
-          <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--red);">63%</div>
-          <div style="font-size:10px;color:#555;line-height:1.4;">interested in a company-level intelligence platform</div>
-        </div>
+      <div style="width:230px;flex-shrink:0;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Market gaps · Secondary Research</div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:11px;border-left:3px solid var(--red);"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10px;font-weight:700;color:#111;">Personal Finance</span><span style="font-size:8px;font-weight:700;background:var(--red);color:#fff;padding:2px 5px;border-radius:2px;">HIGH</span></div><div style="font-size:9.5px;color:#555;line-height:1.4;">Morning Brew leads; BI wins on data journalism depth and source access</div></div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:11px;border-left:3px solid var(--red);"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10px;font-weight:700;color:#111;">Career Development</span><span style="font-size:8px;font-weight:700;background:var(--red);color:#fff;padding:2px 5px;border-radius:2px;">HIGH</span></div><div style="font-size:9.5px;color:#555;line-height:1.4;">LinkedIn dominates on reach; BI beats them on reporting depth and insider access</div></div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:11px;border-left:3px solid #cc6600;"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10px;font-weight:700;color:#111;">Entrepreneurship</span><span style="font-size:8px;font-weight:700;background:#cc6600;color:#fff;padding:2px 5px;border-radius:2px;">GROWING</span></div><div style="font-size:9.5px;color:#555;line-height:1.4;">Substack and podcast creators own this; BI has no dedicated newsletter presence</div></div>
+        <div style="background:rgba(0,0,0,0.04);border-radius:6px;padding:9px;"><div style="font-size:9px;color:#555;line-height:1.5;">40% of respondents have employer subscription budgets — B2B path is validated</div></div>
       </div>
     </div>
   </div>
@@ -2316,32 +2339,33 @@ const SLIDES_HTML = [
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
     <div class="sl-top-tag">Insight 01 · Audience Behavior</div>
-    <div class="sl-title" style="font-size:17px;margin-top:28px;max-width:680px;">The Discovery Is Happening. The Conversion Is Not.<br>Friction at the Social-to-Owned Handoff Is the Root Problem.</div>
-    <div style="display:flex;gap:20px;margin-top:16px;">
-      <div style="flex:1;display:flex;flex-direction:column;gap:12px;">
-        <div class="sl-box">
+    <div class="sl-title" style="font-size:16px;margin-top:28px;max-width:700px;">The Discovery Is Happening. The Conversion Is Not.<br>Friction at the Social-to-Owned Handoff Is the Root Problem.</div>
+    <div style="display:flex;gap:16px;margin-top:14px;">
+      <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
+        <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:14px;border-left:3px solid var(--red);">
           <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Primary Survey</div>
-          <div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">49 of 112</div>
+          <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--red);">49 of 112</div>
           <div style="font-size:10.5px;opacity:0.7;margin-top:4px;line-height:1.5;">respondents discover BI first on social media. The audience exists. The designed path from social into BI's owned ecosystem does not.</div>
         </div>
-        <div class="sl-box">
+        <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:14px;border-left:3px solid rgba(255,255,255,0.2);">
           <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Secondary Research</div>
-          <div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">51%</div>
-          <div style="font-size:10.5px;opacity:0.7;margin-top:4px;line-height:1.5;">of 18–34 year-olds pay more attention to individual news creators than to news brand accounts.</div>
+          <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--red);">51%</div>
+          <div style="font-size:10.5px;opacity:0.7;margin-top:4px;line-height:1.5;">of 18–34 year-olds pay more attention to individual news creators than to news brand accounts. The reporter personality is the hook.</div>
         </div>
-        <div class="sl-box">
+        <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:14px;border-left:3px solid rgba(255,255,255,0.2);">
           <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Secondary Research</div>
-          <div style="font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--red);">85%+</div>
-          <div style="font-size:10.5px;opacity:0.7;margin-top:4px;line-height:1.5;">referral conversion rate achieved by Morning Brew using a peer-invite mechanic.</div>
+          <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--red);">85%+</div>
+          <div style="font-size:10.5px;opacity:0.7;margin-top:4px;line-height:1.5;">referral conversion rate achieved by Morning Brew using a peer-invite mechanic. Peer trust removes the paywall moment entirely.</div>
         </div>
       </div>
       <div style="width:240px;flex-shrink:0;background:rgba(255,255,255,0.04);border-radius:8px;padding:16px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Implication</div>
-        <div style="font-size:10px;opacity:0.75;line-height:1.6;">Build a 4-step funnel:</div>
-        ${[['Hook','Reporter-led video on social'],['Bridge','BI article · no paywall on first touch'],['Engage','Daily briefing + newsletter opt-in'],['Convert','Referral mechanic + employer bundle']].map(([s,d])=>`<div style="display:flex;gap:8px;align-items:flex-start;margin-top:8px;">
-          <div style="background:var(--red);color:#fff;font-size:8px;font-weight:700;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:1px;">${s}</div>
-          <div style="font-size:9.5px;opacity:0.7;line-height:1.4;">${d}</div>
-        </div>`).join('')}
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Implication: 4-Step Funnel</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:center;"><div style="width:60px;height:28px;background:var(--red);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;">HOOK</div><div style="font-size:10px;opacity:0.75;line-height:1.4;">Reporter-led video on social media</div></div>
+          <div style="display:flex;gap:10px;align-items:center;"><div style="width:60px;height:28px;background:#aa0000;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;">BRIDGE</div><div style="font-size:10px;opacity:0.75;line-height:1.4;">BI article — no paywall on first touch</div></div>
+          <div style="display:flex;gap:10px;align-items:center;"><div style="width:60px;height:28px;background:#880000;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;">ENGAGE</div><div style="font-size:10px;opacity:0.75;line-height:1.4;">Daily briefing + newsletter opt-in</div></div>
+          <div style="display:flex;gap:10px;align-items:center;"><div style="width:60px;height:28px;background:#550000;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;">CONVERT</div><div style="font-size:10px;opacity:0.75;line-height:1.4;">Referral mechanic + employer bundle</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2353,32 +2377,41 @@ const SLIDES_HTML = [
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
     <div class="sl-top-tag">Insight 02 · Engagement Model</div>
-    <div class="sl-title" style="font-size:16px;margin-top:28px;max-width:680px;">Readers Do Not Cancel Because of Price. They Cancel Because<br>BI Never Became Part of Their Daily Routine.</div>
-    <div style="margin-top:8px;font-size:11px;font-style:italic;opacity:0.5;">Not a content problem. A ritual problem.</div>
-    <div style="display:flex;gap:16px;margin-top:14px;">
-      <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
-        <div class="sl-box">
-          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Primary Survey</div>
+    <div class="sl-title" style="font-size:15px;margin-top:26px;max-width:680px;">Readers Do Not Cancel Because of Price. They Cancel Because BI Never Became Part of Their Daily Routine.</div>
+    <div style="margin-top:6px;font-size:11px;font-style:italic;opacity:0.45;">Not a content problem. A ritual problem.</div>
+    <div style="display:flex;gap:16px;margin-top:12px;">
+      <div style="flex:1;display:flex;flex-direction:column;gap:9px;">
+        <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;border-left:3px solid var(--red);">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:3px;">Primary Survey — Why cancelled?</div>
           <div style="font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--red);">35%</div>
-          <div style="font-size:10px;opacity:0.7;margin-top:3px;line-height:1.5;">of respondents who cancelled said they did not use it enough — not that it was too expensive or too low quality.</div>
+          <div style="font-size:10px;opacity:0.7;margin-top:3px;line-height:1.4;">said "didn't use it enough" — not price, not quality.</div>
+          <div style="margin-top:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:9px;opacity:0.6;">Didn't use enough</span><span style="font-size:9px;font-weight:700;color:var(--red);">36%</span></div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="height:100%;width:36%;background:var(--red);border-radius:3px;"></div></div></div>
+          <div style="margin-top:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:9px;opacity:0.6;">Too expensive</span><span style="font-size:9px;font-weight:700;color:#aaa;">20%</span></div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="height:100%;width:20%;background:#888;border-radius:3px;"></div></div></div>
+          <div style="margin-top:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:9px;opacity:0.6;">Found free alternative</span><span style="font-size:9px;font-weight:700;color:#aaa;">6%</span></div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="height:100%;width:6%;background:#888;border-radius:3px;"></div></div></div>
         </div>
-        <div class="sl-box">
-          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Primary Survey</div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;border-left:3px solid rgba(255,255,255,0.2);">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:3px;">Primary Survey — Daily habit drivers</div>
           <div style="font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--red);">73 / 112</div>
-          <div style="font-size:10px;opacity:0.7;margin-top:3px;line-height:1.5;">respondents said daily one-minute summaries would bring them back every day — the top habit driver, nearly double personalized feeds.</div>
-        </div>
-        <div class="sl-box">
-          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Secondary Research</div>
-          <div style="font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--red);">90 days</div>
-          <div style="font-size:10px;opacity:0.7;margin-top:3px;line-height:1.5;">is the make-or-break retention window. Habit and community features extend subscriber lifetime by 13–24%.</div>
+          <div style="font-size:10px;opacity:0.7;margin-top:3px;line-height:1.4;">say daily short updates would bring them back every day — nearly double any other driver.</div>
+          <div style="margin-top:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:9px;opacity:0.6;">Daily short updates</span><span style="font-size:9px;font-weight:700;color:var(--red);">66%</span></div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="height:100%;width:66%;background:var(--red);border-radius:3px;"></div></div></div>
+          <div style="margin-top:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:9px;opacity:0.6;">Personalized content feed</span><span style="font-size:9px;font-weight:700;color:#aaa;">48%</span></div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="height:100%;width:48%;background:#888;border-radius:3px;"></div></div></div>
+          <div style="margin-top:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:9px;opacity:0.6;">Newsletters</span><span style="font-size:9px;font-weight:700;color:#aaa;">26%</span></div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="height:100%;width:26%;background:#888;border-radius:3px;"></div></div></div>
         </div>
       </div>
-      <div style="width:230px;flex-shrink:0;background:rgba(255,255,255,0.04);border-radius:8px;padding:16px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">The 5-Visit Rule</div>
-        <div style="font-size:10px;opacity:0.75;line-height:1.6;">Surface the subscription offer only after a reader has returned 5 or more times. Measure return visits over 30 to 60 days.</div>
-        <div style="margin-top:12px;height:1px;background:rgba(255,255,255,0.08);"></div>
-        <div style="margin-top:12px;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Implication</div>
-        <div style="font-size:10px;opacity:0.75;line-height:1.6;">A free personalized daily briefing with no paywall is the habit engine. Career and finance newsletter verticals are the subscription product that follows.</div>
+      <div style="width:230px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;">
+        <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:14px;border-left:3px solid rgba(255,255,255,0.2);">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Secondary Research</div>
+          <div style="font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--red);">90 days</div>
+          <div style="font-size:10px;opacity:0.7;margin-top:4px;line-height:1.5;">make-or-break retention window. Habit and community features extend subscriber lifetime by 13–24%. The subscription ask must come after the habit forms.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:14px;">
+          <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:8px;">The 5-Visit Rule</div>
+          <div style="font-size:10px;opacity:0.75;line-height:1.6;">Surface the subscription offer only after a reader has returned <strong style="color:#fff;">5+ times</strong>. Measure return visits over 30–60 days. Convert the habitual reader, not just the curious one.</div>
+        </div>
+        <div style="background:rgba(204,0,0,0.15);border-left:3px solid var(--red);padding:10px 12px;border-radius:0 6px 6px 0;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Implication</div>
+          <div style="font-size:10px;opacity:0.8;line-height:1.5;">A free personalized daily briefing is the habit engine. Career and finance newsletters are the subscription product that follows.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -2391,26 +2424,28 @@ const SLIDES_HTML = [
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
     <div class="sl-top-tag">Insight 03 · AI Strategy</div>
     <div class="sl-title" style="font-size:16px;margin-top:28px;">AI Destroys Value as an Author and Creates Value as Invisible Production Infrastructure.</div>
-    <div style="display:flex;gap:16px;margin-top:16px;">
+    <div style="display:flex;gap:20px;margin-top:16px;">
       <div style="flex:1;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">AI as Author · destroys trust</div>
-        ${[['AI-written bylines: 84% of survey respondents say this reduces trust or willingness to pay'],
-           ['AI making news judgment calls or setting the editorial agenda'],
-           ['AI-generated video presenters with no human face or voice']
-        ].map(([d])=>`<div style="display:flex;gap:8px;margin-bottom:7px;align-items:flex-start;"><div style="color:var(--red);font-weight:700;flex-shrink:0;">✕</div><div style="font-size:10.5px;opacity:0.75;line-height:1.4;">${d}</div></div>`).join('')}
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#cc4444;margin-bottom:10px;">✕ AI as Author — destroys trust</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:flex-start;background:rgba(200,0,0,0.08);border-radius:4px;padding:9px;"><div style="color:#cc4444;font-weight:700;flex-shrink:0;font-size:12px;">✕</div><div style="font-size:10.5px;opacity:0.8;line-height:1.4;">AI-written bylines: <strong>84% of survey respondents</strong> say this reduces trust or willingness to pay</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;background:rgba(200,0,0,0.08);border-radius:4px;padding:9px;"><div style="color:#cc4444;font-weight:700;flex-shrink:0;font-size:12px;">✕</div><div style="font-size:10.5px;opacity:0.8;line-height:1.4;">AI making news judgment calls or setting the editorial agenda</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;background:rgba(200,0,0,0.08);border-radius:4px;padding:9px;"><div style="color:#cc4444;font-weight:700;flex-shrink:0;font-size:12px;">✕</div><div style="font-size:10.5px;opacity:0.8;line-height:1.4;">AI-generated video presenters with no human face or voice</div></div>
+        </div>
       </div>
       <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
       <div style="flex:1;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#22c55e;margin-bottom:8px;">AI as Production Tool · scales output</div>
-        ${[['Video transcription and script generation from existing reporter interviews'],
-           ['Article-to-newsletter brief conversion, cutting production time'],
-           ['SEO optimisation, headline A/B testing and topic trend detection'],
-           ['Personalized content feed curation to reduce churn']
-        ].map(([d])=>`<div style="display:flex;gap:8px;margin-bottom:7px;align-items:flex-start;"><div style="color:#22c55e;font-weight:700;flex-shrink:0;">→</div><div style="font-size:10.5px;opacity:0.75;line-height:1.4;">${d}</div></div>`).join('')}
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#22c55e;margin-bottom:10px;">→ AI as Production Tool — scales output, preserves trust</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:flex-start;background:rgba(34,197,94,0.08);border-radius:4px;padding:9px;"><div style="color:#22c55e;font-weight:700;flex-shrink:0;font-size:12px;">→</div><div style="font-size:10.5px;opacity:0.8;line-height:1.4;">Video transcription and script generation from existing reporter interviews</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;background:rgba(34,197,94,0.08);border-radius:4px;padding:9px;"><div style="color:#22c55e;font-weight:700;flex-shrink:0;font-size:12px;">→</div><div style="font-size:10.5px;opacity:0.8;line-height:1.4;">Article-to-newsletter brief conversion — cuts production time without replacing editorial voice</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;background:rgba(34,197,94,0.08);border-radius:4px;padding:9px;"><div style="color:#22c55e;font-weight:700;flex-shrink:0;font-size:12px;">→</div><div style="font-size:10.5px;opacity:0.8;line-height:1.4;">SEO optimisation, headline A/B testing and topic trend detection</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;background:rgba(34,197,94,0.08);border-radius:4px;padding:9px;"><div style="color:#22c55e;font-weight:700;flex-shrink:0;font-size:12px;">→</div><div style="font-size:10.5px;opacity:0.8;line-height:1.4;">Personalized content feed curation to increase return visits and reduce churn</div></div>
+        </div>
       </div>
     </div>
-    <div style="margin-top:14px;background:rgba(255,255,255,0.05);border-left:3px solid var(--red);padding:10px 14px;border-radius:0 6px 6px 0;font-size:10px;opacity:0.8;line-height:1.6;">
-      <strong style="color:var(--red);">Primary Survey n=112 —</strong> 55% of respondents would still read AI-assisted content when human sign-off is clearly visible. The guardrail is transparency and human oversight, not the absence of AI entirely.
+    <div style="margin-top:14px;background:rgba(255,255,255,0.05);border-left:3px solid var(--red);padding:10px 14px;border-radius:0 6px 6px 0;font-size:10px;line-height:1.6;">
+      <strong style="color:var(--red);">Primary Survey n=112 —</strong> <span style="opacity:0.85;">55% of respondents would still read AI-assisted content when human sign-off is clearly visible. The guardrail is transparency and human oversight, not the absence of AI entirely.</span>
     </div>
   </div>
   <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>10 / 15</span></div>
@@ -2421,19 +2456,32 @@ const SLIDES_HTML = [
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
     <div class="sl-top-tag">Recommendation 01 · Reporter-as-Creator and Social Funnel</div>
-    <div class="sl-title" style="font-size:14px;margin-top:28px;max-width:760px;">Three Reporter-Led Video Formats and a Referral Funnel Convert Social Viewers Into Subscribers Without a Hard Paywall</div>
-    <div style="display:flex;gap:8px;margin-top:10px;align-items:center;font-size:9.5px;opacity:0.6;">
-      ${['DISCOVER · TikTok / Instagram / YouTube','→','BRIDGE · BI Article · No paywall first touch','→','ENGAGE · Daily Briefing + Newsletter','→','CONVERT · Referral + Employer Bundle'].map(s=>s==='→'?`<span style="color:var(--red);font-size:14px;font-weight:700;">→</span>`:`<div style="background:rgba(255,255,255,0.07);border-radius:4px;padding:5px 8px;">${s}</div>`).join('')}
+    <div class="sl-title" style="font-size:14px;margin-top:26px;max-width:760px;">Three Reporter-Led Video Formats and a Referral Funnel Convert Social Viewers Into Subscribers Without a Hard Paywall</div>
+    <div style="display:flex;gap:6px;margin-top:10px;align-items:stretch;">
+      <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px 0 0 6px;border:1px solid rgba(255,255,255,0.08);padding:10px;text-align:center;"><div style="font-size:9px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">DISCOVER</div><div style="font-size:8.5px;opacity:0.6;line-height:1.4;">TikTok / Instagram / YouTube<br>Reporter-led 60s hook</div></div>
+      <div style="display:flex;align-items:center;color:var(--red);font-size:16px;font-weight:700;padding:0 4px;">›</div>
+      <div style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);padding:10px;text-align:center;"><div style="font-size:9px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">BRIDGE</div><div style="font-size:8.5px;opacity:0.6;line-height:1.4;">BI Article or Newsletter<br>No paywall on first touch</div></div>
+      <div style="display:flex;align-items:center;color:var(--red);font-size:16px;font-weight:700;padding:0 4px;">›</div>
+      <div style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);padding:10px;text-align:center;"><div style="font-size:9px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">ENGAGE</div><div style="font-size:8.5px;opacity:0.6;line-height:1.4;">Daily Briefing + Newsletter<br>Career Intel and Money Moves opt-in</div></div>
+      <div style="display:flex;align-items:center;color:var(--red);font-size:16px;font-weight:700;padding:0 4px;">›</div>
+      <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:0 6px 6px 0;border:1px solid rgba(255,255,255,0.08);padding:10px;text-align:center;"><div style="font-size:9px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">CONVERT</div><div style="font-size:8.5px;opacity:0.6;line-height:1.4;">Referral Mechanic + Employer Bundle<br>Peer trust removes paywall friction</div></div>
     </div>
-    <div style="display:flex;gap:10px;margin-top:12px;">
-      ${[['The Brief','Daily · 60s','Named BI reporter covers the top 3 business headlines. Opens with reporter on screen. Closes with a direct link to the full article on BI.'],
-         ['Money Moves','3× per week · 90s','Personal finance reporter covers one actionable topic per episode. Connects to the Money Memo newsletter with a direct opt-in call to action.'],
-         ['Career Intel','2× per week · 2 min','Job market reporter with an occasional guest expert. Connects to Career Dispatch newsletter. Subscriber opt-in embedded in the final frame.']
-      ].map(([t,f,d])=>`<div class="sl-box" style="flex:1;padding:12px;">
-        <div style="font-size:12px;font-weight:700;margin-bottom:2px;">${t}</div>
-        <div style="font-size:9px;color:var(--red);font-weight:600;margin-bottom:6px;">${f}</div>
-        <div style="font-size:9.5px;opacity:0.65;line-height:1.5;">${d}</div>
-      </div>`).join('')}
+    <div style="display:flex;gap:12px;margin-top:12px;">
+      <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:14px;border-top:3px solid var(--red);">
+        <div style="font-size:12px;font-weight:700;margin-bottom:2px;">The Brief</div>
+        <div style="font-size:9px;color:var(--red);font-weight:600;margin-bottom:6px;">Daily · 60 seconds</div>
+        <div style="font-size:9.5px;opacity:0.65;line-height:1.5;">Named BI reporter covers the top 3 business headlines. Opens with reporter on screen. Closes with a direct link to the full article on BI.</div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:14px;border-top:3px solid #aa0000;">
+        <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Money Moves</div>
+        <div style="font-size:9px;color:var(--red);font-weight:600;margin-bottom:6px;">3× per week · 90 seconds</div>
+        <div style="font-size:9.5px;opacity:0.65;line-height:1.5;">Personal finance reporter covers one actionable topic per episode. Connects to the Money Memo newsletter with a direct opt-in CTA.</div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:14px;border-top:3px solid #880000;">
+        <div style="font-size:12px;font-weight:700;margin-bottom:2px;">Career Intel</div>
+        <div style="font-size:9px;color:var(--red);font-weight:600;margin-bottom:6px;">2× per week · 2 minutes</div>
+        <div style="font-size:9.5px;opacity:0.65;line-height:1.5;">Job market reporter with an occasional guest expert. Connects to Career Dispatch newsletter. Subscriber opt-in embedded in the final frame.</div>
+      </div>
     </div>
   </div>
   <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>11 / 15</span></div>
@@ -2446,27 +2494,35 @@ const SLIDES_HTML = [
     <div class="sl-top-tag">Recommendation 02 · Habit Formation and Newsletter Verticals</div>
     <div class="sl-title" style="font-size:14px;margin-top:28px;">A Free Daily Briefing Builds the Reading Ritual; Two Career-Utility Newsletters Are the Subscription Offer</div>
     <div style="display:flex;gap:14px;margin-top:14px;">
-      <div style="flex:1.2;background:rgba(255,255,255,0.04);border-radius:8px;padding:14px;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#aaa;margin-bottom:6px;">Free Daily Briefing · No paywall · No subscription required</div>
-        <div style="font-size:10.5px;opacity:0.75;line-height:1.6;">60-second personalized briefing by interest area. No paywall. Surface the subscription offer only after 5 or more return visits.</div>
+      <div style="width:240px;flex-shrink:0;">
+        <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:14px;margin-bottom:10px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#aaa;margin-bottom:6px;">Free Daily Briefing · No paywall required</div>
+          <div style="font-size:10.5px;opacity:0.75;line-height:1.6;">60-second personalized briefing by interest area. No paywall. Surface the subscription offer only after <strong style="color:#fff;">5+ return visits</strong>.</div>
+          <div style="margin-top:10px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Pricing</div>
+          <div style="font-size:10px;opacity:0.75;line-height:1.5;">$5–10/month (48% of respondents)<br>Employer-billed bundles for the 40% with company subscription budgets</div>
+        </div>
+        <div style="background:rgba(204,0,0,0.12);border-left:3px solid var(--red);padding:10px 12px;border-radius:0 6px 6px 0;font-size:10px;opacity:0.85;line-height:1.5;">73 of 112 respondents said daily short updates are the #1 habit driver — nearly double personalized feeds.</div>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
-        <div class="sl-box" style="padding:11px;">
-          <div style="font-size:10px;font-weight:700;margin-bottom:2px;">MONEY MEMO</div>
-          <div style="font-size:9px;color:var(--red);font-weight:600;margin-bottom:5px;">Personal Finance · Every Monday</div>
-          ${['Salary negotiation playbooks','Investing basics: ETFs and index funds','Side income and freelance tax strategy'].map(b=>`<div class="sl-bullet"><div class="sl-bullet-dot"></div><div style="font-size:9.5px;opacity:0.7;">${b}</div></div>`).join('')}
-          <div style="font-size:8.5px;opacity:0.45;margin-top:4px;">Gap: Morning Brew leads here; BI wins on data journalism depth</div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:14px;border-left:3px solid var(--red);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;"><div><div style="font-size:12px;font-weight:700;">MONEY MEMO</div><div style="font-size:9px;color:var(--red);font-weight:600;margin-top:2px;">Personal Finance · Every Monday</div></div><div style="font-size:8px;opacity:0.5;text-align:right;">Gap: Morning Brew leads;<br>BI wins on data depth</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Salary negotiation playbooks</div>
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Investing basics: ETFs &amp; index funds</div>
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Side income and freelance tax strategy</div>
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Financial planning for career transitions</div>
+          </div>
         </div>
-        <div class="sl-box" style="padding:11px;">
-          <div style="font-size:10px;font-weight:700;margin-bottom:2px;">CAREER DISPATCH</div>
-          <div style="font-size:9px;color:var(--red);font-weight:600;margin-bottom:5px;">Career Development · Every Wednesday</div>
-          ${['Job market weekly pulse','Skills in demand: AI, data and finance','Interview preparation with industry insiders'].map(b=>`<div class="sl-bullet"><div class="sl-bullet-dot"></div><div style="font-size:9.5px;opacity:0.7;">${b}</div></div>`).join('')}
-          <div style="font-size:8.5px;opacity:0.45;margin-top:4px;">Gap: LinkedIn dominates on reach; BI beats them on reporting depth</div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:14px;border-left:3px solid #880000;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;"><div><div style="font-size:12px;font-weight:700;">CAREER DISPATCH</div><div style="font-size:9px;color:var(--red);font-weight:600;margin-top:2px;">Career Development · Every Wednesday</div></div><div style="font-size:8px;opacity:0.5;text-align:right;">Gap: LinkedIn dominates reach;<br>BI wins on reporting depth</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Job market weekly pulse</div>
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Skills in demand: AI, data and finance</div>
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Interview prep with industry insiders</div>
+            <div style="display:flex;gap:5px;align-items:center;font-size:9px;opacity:0.7;"><div style="width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>Workplace culture and remote work trends</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div style="margin-top:10px;background:rgba(204,0,0,0.15);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 4px 4px 0;font-size:10px;opacity:0.85;">
-      Pricing: $5–10/month (48% of respondents) · Employer-billed bundles for the 40% with company subscription budgets
     </div>
   </div>
   <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>12 / 15</span></div>
@@ -2477,27 +2533,21 @@ const SLIDES_HTML = [
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
     <div class="sl-top-tag">Recommendation 03 · AI as Production Force-Multiplier</div>
-    <div class="sl-title" style="font-size:14px;margin-top:28px;">Deploy AI as a Production Force-Multiplier Now and Build a Proprietary Content Data Advantage Over Time</div>
-    <div style="display:flex;gap:14px;margin-top:12px;">
+    <div class="sl-title" style="font-size:14px;margin-top:26px;">Deploy AI as a Production Force-Multiplier Now and Build a Proprietary Content Data Advantage Over Time</div>
+    <div style="display:flex;gap:14px;margin-top:14px;">
       <div style="flex:1;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Phase 1 · 90-Day Production Pilot</div>
-        ${[['10% Pilot · Days 1–30','AI-assisted video transcription, article-to-script conversion and thumbnail A/B testing. Human editors review all output before every publish.'],
-           ['25% Scale · Days 31–60','Newsletter brief generation, SEO headline optimisation and topic trend detection. Measure quality and engagement versus manual baseline.'],
-           ['50% Integration · Days 61–90','Full workflow integration with human-in-the-loop sign-off at every stage. AI handles production scale; reporters retain editorial voice.']
-        ].map(([t,d])=>`<div class="sl-box" style="margin-bottom:8px;padding:10px;">
-          <div style="font-size:10px;font-weight:700;margin-bottom:3px;">${t}</div>
-          <div style="font-size:9.5px;opacity:0.65;line-height:1.4;">${d}</div>
-        </div>`).join('')}
-      </div>
-      <div style="flex:1;">
+        <div style="display:flex;gap:0;margin-bottom:10px;">
+          <div style="flex:1;background:rgba(204,0,0,0.25);border-radius:6px 0 0 6px;padding:11px;border-right:1px solid rgba(0,0,0,0.2);"><div style="font-size:9px;font-weight:700;color:var(--red);margin-bottom:4px;">Days 1–30 · 10% Pilot</div><div style="font-size:9px;opacity:0.65;line-height:1.4;">Video transcription, article-to-script conversion, thumbnail A/B testing. Human editors review all output.</div></div>
+          <div style="flex:1;background:rgba(204,0,0,0.18);padding:11px;border-right:1px solid rgba(0,0,0,0.2);"><div style="font-size:9px;font-weight:700;color:var(--red);margin-bottom:4px;">Days 31–60 · 25% Scale</div><div style="font-size:9px;opacity:0.65;line-height:1.4;">Newsletter brief generation, SEO headline optimisation, topic trend detection. Measure vs. manual baseline.</div></div>
+          <div style="flex:1;background:rgba(204,0,0,0.1);border-radius:0 6px 6px 0;padding:11px;"><div style="font-size:9px;font-weight:700;color:var(--red);margin-bottom:4px;">Days 61–90 · 50% Integration</div><div style="font-size:9px;opacity:0.65;line-height:1.4;">Full workflow integration with human-in-the-loop sign-off. AI handles scale; reporters retain editorial voice.</div></div>
+        </div>
         <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Phase 2 · Content Data Advantage</div>
-        ${[['01','Insider Knowledge Base','Structure 10+ years of verified BI reporting into a searchable intelligence product. Validated by 63% of respondents expressing interest.'],
-           ['02','Proprietary Data Layer','BI\'s exclusive source relationships, verified documents and investigative datasets cannot be replicated by a public language model. This is the defensible content moat.'],
-           ['03','Content Licensing Recovery','Identify unauthorized use of BI content and convert those contacts into licensing relationships.']
-        ].map(([n,t,d])=>`<div style="display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;">
-          <div class="sl-num-circle" style="width:20px;height:20px;font-size:10px;">${n}</div>
-          <div><div style="font-size:10px;font-weight:700;margin-bottom:2px;">${t}</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">${d}</div></div>
-        </div>`).join('')}
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><div style="font-size:10px;font-weight:700;margin-bottom:2px;">Insider Knowledge Base</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">Structure 10+ years of verified BI reporting into a searchable intelligence product. 63% of respondents interested.</div></div></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;border-radius:50%;background:#aa0000;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><div style="font-size:10px;font-weight:700;margin-bottom:2px;">Proprietary Data Layer</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">BI's exclusive source relationships and investigative datasets cannot be replicated by a public language model. This is the defensible content moat.</div></div></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;border-radius:50%;background:#880000;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><div style="font-size:10px;font-weight:700;margin-bottom:2px;">Content Licensing Recovery</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">Identify unauthorized use of BI content and convert those contacts into licensing relationships.</div></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2512,21 +2562,13 @@ const SLIDES_HTML = [
     <div class="sl-title" style="font-size:16px;margin-top:28px;">Our Recommendations Carry Real AI Risks,<br>These Five Guardrails Make Them Work</div>
     <div style="display:flex;gap:16px;margin-top:16px;">
       <div style="flex:1;display:flex;flex-direction:column;gap:9px;">
-        ${[[1,'No AI bylines','Reporters own every piece of content. AI is invisible production infrastructure, never a named contributor or author.'],
-           [2,'Human editorial sign-off before every publish','Every AI-assisted piece requires reporter or editor approval before going live. No exceptions at any stage of the pilot.'],
-           [3,'AI never sets the editorial agenda','AI surfaces trend signals and suggests topics based on engagement data. Reporters make every news judgment call.']
-        ].map(([n,t,d])=>`<div style="display:flex;gap:10px;align-items:flex-start;">
-          <div class="sl-num-circle" style="flex-shrink:0;">${n}</div>
-          <div><div style="font-size:11px;font-weight:600;margin-bottom:3px;">${t}</div><div style="font-size:10px;opacity:0.65;line-height:1.4;">${d}</div></div>
-        </div>`).join('')}
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px;">No AI bylines</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">Reporters own every piece of content. AI is invisible production infrastructure, never a named contributor or author.</div></div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px;">Human editorial sign-off before every publish</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">Every AI-assisted piece requires reporter or editor approval before going live. No exceptions at any stage of the pilot.</div></div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px;">AI never sets the editorial agenda</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">AI surfaces trend signals and suggests topics based on engagement data. Reporters make every news judgment call.</div></div></div>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:9px;">
-        ${[[4,'Trust metrics monitored weekly','Shares, time on page and subscription rates tracked continuously. Any decline triggers immediate review of AI output.'],
-           [5,'Proprietary data isolated from external crawlers','BI\'s investigative data, source notes and exclusive datasets are separated from public AI training pipelines.']
-        ].map(([n,t,d])=>`<div style="display:flex;gap:10px;align-items:flex-start;">
-          <div class="sl-num-circle" style="flex-shrink:0;">${n}</div>
-          <div><div style="font-size:11px;font-weight:600;margin-bottom:3px;">${t}</div><div style="font-size:10px;opacity:0.65;line-height:1.4;">${d}</div></div>
-        </div>`).join('')}
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px;">Trust metrics monitored weekly</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">Shares, time on page and subscription rates tracked continuously. Any decline triggers immediate review of AI output.</div></div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px;">Proprietary data isolated from external crawlers</div><div style="font-size:9.5px;opacity:0.65;line-height:1.4;">BI's investigative data, source notes and exclusive datasets are separated from public AI training pipelines and external API access.</div></div></div>
         <div style="margin-top:8px;background:rgba(204,0,0,0.15);border-left:3px solid var(--red);padding:10px 12px;border-radius:0 6px 6px 0;">
           <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Data Validation</div>
           <div style="font-size:10px;opacity:0.8;line-height:1.5;">55% of respondents would still read AI-assisted content when human sign-off is clearly visible. Transparency is the guardrail, not the absence of AI.</div>
@@ -2542,22 +2584,31 @@ const SLIDES_HTML = [
   <div class="sl-accent-bar"></div>
   <div style="position:absolute;top:22px;left:32px;right:32px;bottom:28px;">
     <div class="sl-top-tag">Roadmap · 90-Day Activation Plan</div>
-    <div class="sl-title" style="font-size:15px;margin-top:28px;">Three Work Streams Over 90 Days Build the Habit First<br>and Unlock Subscription Conversion by Month 6.</div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
-      ${[['Reporter-as-Creator & Social Funnel','Define 3 video formats and production template','Pilot The Brief: 5 episodes, measure retention','Launch Money Moves and Career Intel formats','Publish video playbook and make scale decision'],
-         ['Daily Briefing and Newsletter Verticals','Audit newsletter list and define vertical segments','Launch Money Memo pilot to 5,000 subscribers','Launch Career Dispatch and A/B test subject lines','Analyse open rates, clicks and paid conversion'],
-         ['AI Production Pilot','Identify AI tools and define governance rules','10% pilot: transcription and script generation','25% expansion: newsletter briefs and SEO','Review metrics and make 50% integration decision']
-      ].map(([ws,...weeks])=>`<div style="display:flex;gap:0;">
-        <div style="width:170px;flex-shrink:0;background:rgba(255,255,255,0.06);border-radius:6px 0 0 6px;padding:10px;font-size:10px;font-weight:600;line-height:1.3;display:flex;align-items:center;">${ws}</div>
-        ${weeks.map((w,i)=>`<div style="flex:1;border-left:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);padding:8px 10px;">
-          <div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:3px;">Week ${[1,4,8,12][i]}</div>
-          <div style="font-size:9px;opacity:0.65;line-height:1.4;">${w}</div>
-        </div>`).join('')}
-      </div>`).join('')}
+    <div class="sl-title" style="font-size:15px;margin-top:26px;">Three Work Streams Over 90 Days Build the Habit First<br>and Unlock Subscription Conversion by Month 6.</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px;">
+      <div style="display:flex;gap:0;border-radius:6px;overflow:hidden;">
+        <div style="width:160px;flex-shrink:0;background:var(--red);padding:10px 12px;display:flex;align-items:center;"><span style="font-size:10px;font-weight:700;color:#fff;line-height:1.3;">Reporter-as-Creator &amp; Social Funnel</span></div>
+        <div style="flex:1;background:rgba(255,255,255,0.06);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 1</div><div style="font-size:9px;opacity:0.65;">Define 3 video formats and production template</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 4</div><div style="font-size:9px;opacity:0.65;">Pilot The Brief: 5 episodes, measure retention</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.06);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 8</div><div style="font-size:9px;opacity:0.65;">Launch Money Moves and Career Intel formats</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 12</div><div style="font-size:9px;opacity:0.65;">Publish video playbook and make scale decision</div></div>
+      </div>
+      <div style="display:flex;gap:0;border-radius:6px;overflow:hidden;">
+        <div style="width:160px;flex-shrink:0;background:#aa0000;padding:10px 12px;display:flex;align-items:center;"><span style="font-size:10px;font-weight:700;color:#fff;line-height:1.3;">Daily Briefing &amp; Newsletter Verticals</span></div>
+        <div style="flex:1;background:rgba(255,255,255,0.06);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 1</div><div style="font-size:9px;opacity:0.65;">Audit newsletter list and define vertical segments</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 4</div><div style="font-size:9px;opacity:0.65;">Launch Money Memo pilot to 5,000 subscribers</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.06);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 8</div><div style="font-size:9px;opacity:0.65;">Launch Career Dispatch and A/B test subject lines</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 12</div><div style="font-size:9px;opacity:0.65;">Analyse open rates, clicks and paid conversion</div></div>
+      </div>
+      <div style="display:flex;gap:0;border-radius:6px;overflow:hidden;">
+        <div style="width:160px;flex-shrink:0;background:#880000;padding:10px 12px;display:flex;align-items:center;"><span style="font-size:10px;font-weight:700;color:#fff;line-height:1.3;">AI Production Pilot</span></div>
+        <div style="flex:1;background:rgba(255,255,255,0.06);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 1</div><div style="font-size:9px;opacity:0.65;">Identify AI tools and define governance rules</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 4</div><div style="font-size:9px;opacity:0.65;">10% pilot: transcription and script generation</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.06);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 8</div><div style="font-size:9px;opacity:0.65;">25% expansion: newsletter briefs and SEO</div></div>
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-left:1px solid rgba(0,0,0,0.2);"><div style="font-size:8.5px;font-weight:700;color:var(--red);margin-bottom:2px;">Week 12</div><div style="font-size:9px;opacity:0.65;">Review metrics and make 50% integration decision</div></div>
+      </div>
     </div>
-    <div style="margin-top:10px;background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 12px;font-size:9.5px;opacity:0.7;">
-      <strong style="color:var(--red);">Success metrics:</strong> 35%+ video retention · 500+ newsletter opt-ins per week · Paywall conversion lift of 15% by Month 6
-    </div>
+    <div style="margin-top:10px;background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 14px;font-size:9.5px;opacity:0.7;"><strong style="color:var(--red);">Success metrics:</strong> 35%+ video retention · 500+ newsletter opt-ins per week · Paywall conversion lift of 15% by Month 6</div>
   </div>
   <div class="sl-footer"><span>CONFIDENTIAL · Business Insider Engagement Strategy · May 2026 · n=112</span><span>15 / 15</span></div>
 </div>`,
@@ -2576,8 +2627,9 @@ function renderSlide(idx) {
   const display = document.getElementById('slide-display');
   if (!display) return;
   const scale = slideScale();
-  display.innerHTML = `<div style="transform:scale(${scale});transform-origin:top left;width:960px;height:${Math.round(540*scale)}px;">${SLIDES_HTML[idx]}</div>`;
+  display.innerHTML = `<div style="transform:scale(${scale});transform-origin:top left;width:960px;height:540px;">${SLIDES_HTML[idx]}</div>`;
   display.style.height = Math.round(540 * scale) + 'px';
+  display.style.overflow = 'hidden';
 
   document.getElementById('sl-counter').textContent = `${idx + 1} / ${SLIDES_HTML.length}`;
   document.getElementById('sl-prev').disabled = idx === 0;
