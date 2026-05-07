@@ -1436,24 +1436,7 @@
 
 <!-- ════════════════ SLIDES ════════════════ -->
 <div class="tab-section" id="tab-slides">
-<div class="slides-shell">
-
-  <!-- Main viewport -->
-  <div class="slide-viewport" id="slide-viewport">
-    <div id="slide-display" style="width:100%;height:100%;"></div>
-  </div>
-
-  <!-- Nav bar -->
-  <div class="slide-nav">
-    <button class="slide-nav-btn" id="sl-prev" onclick="slideGo(-1)">&#8592;</button>
-    <span class="slide-counter" id="sl-counter">1 / 15</span>
-    <button class="slide-nav-btn" id="sl-next" onclick="slideGo(1)">&#8594;</button>
-  </div>
-
-  <!-- Thumbnails -->
-  <div class="slide-thumbnails" id="slide-thumbs"></div>
-
-</div>
+  <iframe src="BI_Final_NYU_Group.pdf" style="width:100%;height:82vh;border:none;display:block;"></iframe>
 </div>
 
 </main>
@@ -2615,73 +2598,12 @@ const SLIDES_HTML = [
 
 ];
 
-let currentSlide = 0;
-
-function slideScale() {
-  const vp = document.getElementById('slide-viewport');
-  if (!vp) return 1;
-  return vp.offsetWidth / 960;
-}
-
-function renderSlide(idx) {
-  const display = document.getElementById('slide-display');
-  if (!display) return;
-  const scale = slideScale();
-  display.innerHTML = `<div style="transform:scale(${scale});transform-origin:top left;width:960px;height:540px;">${SLIDES_HTML[idx]}</div>`;
-  display.style.height = Math.round(540 * scale) + 'px';
-  display.style.overflow = 'hidden';
-
-  document.getElementById('sl-counter').textContent = `${idx + 1} / ${SLIDES_HTML.length}`;
-  document.getElementById('sl-prev').disabled = idx === 0;
-  document.getElementById('sl-next').disabled = idx === SLIDES_HTML.length - 1;
-
-  document.querySelectorAll('.slide-thumb').forEach((t, i) => {
-    t.classList.toggle('active', i === idx);
-    if (i === idx) t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  });
-
-  currentSlide = idx;
-}
-
-function slideGo(delta) {
-  const next = Math.max(0, Math.min(SLIDES_HTML.length - 1, currentSlide + delta));
-  renderSlide(next);
-}
-
-function buildThumbnails() {
-  const container = document.getElementById('slide-thumbs');
-  if (!container) return;
-  container.innerHTML = SLIDES_HTML.map((html, i) => {
-    const scale = 110 / 960;
-    return `<div class="slide-thumb${i === 0 ? ' active' : ''}" onclick="renderSlide(${i})" title="Slide ${i+1}">
-      <div style="transform:scale(${scale});transform-origin:top left;width:960px;height:540px;pointer-events:none;">
-        ${html}
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// Keyboard nav for slides tab
-document.addEventListener('keydown', e => {
-  const slidesTab = document.getElementById('tab-slides');
-  if (!slidesTab || !slidesTab.classList.contains('active')) return;
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') slideGo(1);
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') slideGo(-1);
-});
-
-window.addEventListener('resize', () => {
-  if (document.getElementById('tab-slides')?.classList.contains('active')) {
-    renderSlide(currentSlide);
-  }
-});
-
 // ══════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════
 (function init() {
   renderAll();
   renderOnce();
-  buildThumbnails();
 })();
 </script>
 </body>
